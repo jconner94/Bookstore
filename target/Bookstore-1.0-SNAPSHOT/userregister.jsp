@@ -31,26 +31,36 @@
 <div align="center">
     <h1>Create Account (*=required)</h1>
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
+        <table style="with: 80%">
+            <tr>
                 <label><b>*First Name</b></label>
                 <input type="text" name="firstName" placeholder="First Name..." id="username" required/>
-
+            </tr>
+            <tr>
                 <label><b>*Last Name</b></label>
                 <input type="text" name="lastName" placeholder="Last Name..." id="username" required/>
+            </tr>
+            <tr>
                 <label><b>*Email</b></label>
                 <input type="text" name="email" placeholder="Email..." id="username2" required/>
-
+            </tr>
+            <tr>
                 <label><b>*Password</b></label>
                 <input type="password" name="password" placeholder="Password..." id="username" required/>
-
+            </tr>
+            <tr>
                 <label><b>*Confirm Password</b></label>
                 <input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/>
-
+            </tr>
+            <tr>
                 <label><b>Street Address</b></label>
                 <input type="text" name="street" placeholder="Street Address..." id="username" />
-
+            </tr>
+            <tr>
                 <label><b>City</b></label>
                 <input type="text" name="city" placeholder="City..." id="username" />
-
+            </tr>
+            <tr>
                 <label><b>State</b></label>
                 <select name="state">
                     <option value=""></option>
@@ -106,12 +116,14 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-
+            </tr>
+            <tr>
                 <label><b>Credit Card Number</b></label>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
+            </tr>
+            <tr>
                 <label><b>Card Expiration Date</b></label>
-
                 <select name="expMonth">
                     <option value=""></option>
                     <option value="01">01-January</option>
@@ -127,7 +139,6 @@
                     <option value="11">11-November</option>
                     <option value="12">12-December</option>
                 </select>
-
                     <select name="expYear">
                         <option value=""></option>
                         <option value="21">2021</option>
@@ -141,10 +152,14 @@
                         <option value="29">2029</option>
                         <option value="30">2030</option>
                     </select>
-
+            </tr>
+            <tr>
                 <label><b>Security Code</b></label>
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
+            </tr>
+
+        </table>
         <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
             Create Account</button>
     </form>

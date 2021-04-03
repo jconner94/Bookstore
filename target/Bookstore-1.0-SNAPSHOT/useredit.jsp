@@ -18,9 +18,9 @@
 
 <body>
 <nav>
-    <a href="/home" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
+    <a href="index.jsp" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
     <ul class="links">
-        <li><a href="/home" style="text-decoration: none; color: white">Home</a></li>
+        <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
     </ul>
     <ul class="icons">
