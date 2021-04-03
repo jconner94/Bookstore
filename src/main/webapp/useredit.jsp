@@ -151,7 +151,7 @@
                 <label><b><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            maxlength="3" value = "${cvv }" placeholder="xxx"/></b></label>
 
-        <button type="submit" id="edit" onClick = "checkPass(); sendEmail()" value="Submit">
+        <button type="submit" id="edit" onClick = "if(checkPass()) { sendEmail()} else {return false}" value="Submit">
             Submit Changes</button>
     </form>
 </div>

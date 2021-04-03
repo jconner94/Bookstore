@@ -32,42 +32,33 @@
 <div align="center">
     <h1>Edit Profile</h1>
     <form action="<%= request.getContextPath() %>/edit-servlet" id="editAcct" method="post">
-        <table style="with: 80%">
-            <tr>
-                <td>User ID</td>
-                <td><input type="text" name="userID" value=${userID } readonly="readonly"/></td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td><input type="text" name="firstName" value=${firstName } required/></td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td><input type="text" name="lastName" value=${lastName } required/></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" name="email" id="email" value=${email } readonly="readonly"/></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" name="password" placeholder="Password" required/></td>
-            </tr>
-            <tr>
-                <td>Confirm Password</td>
-                <td><input type="password" name="confPassword" placeholder="Confirm Password..." required/></td>
-            </tr>
-            <tr>
-                <td>Street Address</td>
-                <td><input type="text" name="street" value=${street } /></td>
-            </tr>
-            <tr>
-                <td>City</td>
-                <td><input type="text" name="city" value=${city } /></td>
-            </tr>
-            <tr>
-                <td>State</td>
-                <td><select name="state">
+
+        <label><b>User ID</b></label>
+            <label><b><input type="text" name="userID" value=${userID } readonly="readonly"/></b></label>
+
+                <label><b>First Name</b></label>
+                    <label><b><input type="text" name="firstName" value=${firstName } required/></b></label>
+
+                <label><b>Last Name</b></label>
+                    <label><b><input type="text" name="lastName" value=${lastName } required/></b></label>
+
+                <label><b>Email</b></label>
+                    <label><b><input type="text" name="email" id="email" value=${email } readonly="readonly"/></b></label>
+
+                <label><b>Password</b></label>
+                <label><b><input type="password" name="password" placeholder="Password" required/></b></label>
+
+                <label><b>Confirm Password</b></label>
+                <label><b><input type="password" name="confPassword" placeholder="Confirm Password..." required/></b></label>
+
+                <label><b>Street Address</b></label>
+                <label><b><input type="text" name="street" value=${street } /></b></label>
+
+                <label><b>City</b></label>
+                <label><b><input type="text" name="city" value=${city } /></b></label>
+
+                <label><b>State</b></label>
+                <label><b><select name="state">
                     <option value=""></option>
                     <option value="AL" selected="@${state} == AL">Alabama</option>
                     <option value="AK" selected="@${state} == AK">Alaska</option>
@@ -120,16 +111,14 @@
                     <option value="WV" selected="@${state} == WV">West Virginia</option>
                     <option value="WI" selected="@${state} == WI">Wisconsin</option>
                     <option value="WY" selected="@${state} == WY">Wyoming</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td>Credit Card Number</td>
-                <td><input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                           maxlength="19" value = "${cardNum }" placeholder="xxxx xxxx xxxx xxxx"/></td>
-            </tr>
-            <tr>
-                <td>Card Expiration Date</td>
-                <td><select name="expMonth">
+                </select></b></label>
+
+                <label><b>Credit Card Number</b></label>
+                <label><b><input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                           maxlength="19" value = "${cardNum }" placeholder="xxxx xxxx xxxx xxxx"/></b></label>
+
+                <label><b>Card Expiration Date</b></label>
+                <label><b><select name="expMonth">
                     <option value=""></option>
                     <option value="01" selected="@${expMonth } == 01">01-January</option>
                     <option value="02" selected="@${expMonth } == 02">02-February</option>
@@ -156,15 +145,13 @@
                         <option value="28" selected="@${expYear } == 28">2028</option>
                         <option value="29" selected="@${expYear } == 29">2029</option>
                         <option value="30" selected="@${expYear } == 30">2030</option>
-                    </select></td>
-            </tr>
-            <tr>
-                <td>Security Code</td>
-                <td><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
-                           maxlength="3" value = "${cvv }" placeholder="xxx"/></td>
-            </tr>
-        </table>
-        <button type="submit" id="edit" onClick = "checkPass(); sendEmail()" value="Submit">
+                    </select></b></label>
+
+                <label><b>Security Code</b></label>
+                <label><b><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
+                           maxlength="3" value = "${cvv }" placeholder="xxx"/></b></label>
+
+        <button type="submit" id="edit" onClick = "if(checkPass()) { sendEmail()} else {return false}" value="Submit">
             Submit Changes</button>
     </form>
 </div>
@@ -199,13 +186,6 @@
             Body: "You have successfully updated your User Profile!",
         })
         alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
-    }
-</script>
-
-<script>
-    function clickFuncs() {
-        checkPass();
-        userEdit();
     }
 </script>
 
