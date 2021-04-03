@@ -15,7 +15,7 @@ public class UserDao {
         String FETCH_ID_SQL = "SELECT MAX(userID) FROM users";
         String INSERT_USERS_SQL = "INSERT INTO users" +
                 " (userID, firstName, lastName, email, password," +
-                " street, city, state, cardNum, expMonth, expYear, cvv" +
+                " street, city, state, cardNum, expMonth, expYear, cvv)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
@@ -29,7 +29,7 @@ public class UserDao {
             int maxID = 0;
 
             if(rs.next()) {
-                maxID = rs.getInt("MAX(userID");
+                maxID = rs.getInt("MAX(userID)");
             }
 
             maxID++; // ID for new user
