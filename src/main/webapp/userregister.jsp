@@ -28,7 +28,7 @@
         <li><a href="Shop.html"><img src="NavIcons/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
-<div align="center">
+<div class = "login">
     <h1>Create Account (*=required)</h1>
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
                 <label><b>*First Name</b></label><br>
@@ -106,8 +106,8 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                </select>
-
+                </select><br>
+        <br><br>
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
@@ -128,8 +128,8 @@
                     <option value="10">10-October</option>
                     <option value="11">11-November</option>
                     <option value="12">12-December</option>
-                </select>
-
+                </select><br>
+        <br><br>
                     <select name="expYear">
                         <option value=""></option>
                         <option value="21">2021</option>
@@ -142,8 +142,8 @@
                         <option value="28">2028</option>
                         <option value="29">2029</option>
                         <option value="30">2030</option>
-                    </select>
-
+                    </select><br>
+        <br><br>
                 <label><b>Security Code</b></label><br>
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
