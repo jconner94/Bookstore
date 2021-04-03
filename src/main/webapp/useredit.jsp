@@ -29,36 +29,36 @@
         <li><a href="Shop.html"><img src="NavIcons/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
-<div align="center">
+<div class="login">
     <h1>Edit Profile</h1>
     <form action="<%= request.getContextPath() %>/edit-servlet" id="editAcct" method="post">
 
-        <label><b>User ID</b></label>
-            <label><b><input type="text" name="userID" value=${userID } readonly="readonly"/></b></label>
+        <label><b>User ID</b></label><br>
+            <label><b><input type="text" name="userID" value=${userID } readonly="readonly"/></b></label><br>
 
-                <label><b>First Name</b></label>
-                    <label><b><input type="text" name="firstName" value=${firstName } required/></b></label>
-
-                <label><b>Last Name</b></label>
-                    <label><b><input type="text" name="lastName" value=${lastName } required/></b></label>
-
-                <label><b>Email</b></label>
-                    <label><b><input type="text" name="email" id="email" value=${email } readonly="readonly"/></b></label>
-
-                <label><b>Password</b></label>
-                <label><b><input type="password" name="password" placeholder="Password" required/></b></label>
-
-                <label><b>Confirm Password</b></label>
-                <label><b><input type="password" name="confPassword" placeholder="Confirm Password..." required/></b></label>
-
-                <label><b>Street Address</b></label>
-                <label><b><input type="text" name="street" value=${street } /></b></label>
-
-                <label><b>City</b></label>
-                <label><b><input type="text" name="city" value=${city } /></b></label>
-
-                <label><b>State</b></label>
-                <label><b><select name="state">
+                <label><b>First Name</b></label><br>
+                <input type="text" name="firstName" value=${firstName } required/>
+        <br><br>
+                <label><b>Last Name</b></label><br>
+                <input type="text" name="lastName" value=${lastName } required/>
+        <br><br>
+                <label><b>Email</b></label><br>
+                <input type="text" name="email" id="email" value=${email } readonly="readonly"/>
+        <br><br>
+                <label><b>Password</b></label><br>
+                <input type="password" name="password" placeholder="Password" required/>
+        <br><br>
+                <label><b>Confirm Password</b></label><br>
+                <input type="password" name="confPassword" placeholder="Confirm Password..." required/>
+        <br><br>
+                <label><b>Street Address</b></label><br>
+                <input type="text" name="street" value=${street } />
+        <br><br>
+                <label><b>City</b></label><br>
+                <input type="text" name="city" value=${city } />
+        <br><br>
+                <label><b>State</b></label><br>
+                <select name="state">
                     <option value=""></option>
                     <option value="AL" selected="@${state} == AL">Alabama</option>
                     <option value="AK" selected="@${state} == AK">Alaska</option>
@@ -111,14 +111,14 @@
                     <option value="WV" selected="@${state} == WV">West Virginia</option>
                     <option value="WI" selected="@${state} == WI">Wisconsin</option>
                     <option value="WY" selected="@${state} == WY">Wyoming</option>
-                </select></b></label>
+                </select>
 
-                <label><b>Credit Card Number</b></label>
-                <label><b><input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                           maxlength="19" value = "${cardNum }" placeholder="xxxx xxxx xxxx xxxx"/></b></label>
+                <label><b>Credit Card Number</b></label><br>
+                <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                           maxlength="19" value = "${cardNum }" placeholder="xxxx xxxx xxxx xxxx"/>
 
-                <label><b>Card Expiration Date</b></label>
-                <label><b><select name="expMonth">
+                <label><b>Card Expiration Date</b></label><br>
+                <select name="expMonth">
                     <option value=""></option>
                     <option value="01" selected="@${expMonth } == 01">01-January</option>
                     <option value="02" selected="@${expMonth } == 02">02-February</option>
@@ -145,12 +145,12 @@
                         <option value="28" selected="@${expYear } == 28">2028</option>
                         <option value="29" selected="@${expYear } == 29">2029</option>
                         <option value="30" selected="@${expYear } == 30">2030</option>
-                    </select></b></label>
-
-                <label><b>Security Code</b></label>
-                <label><b><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
-                           maxlength="3" value = "${cvv }" placeholder="xxx"/></b></label>
-
+                    </select>
+        <br><br>
+                <label><b>Security Code</b></label><br>
+                <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
+                           maxlength="3" value = "${cvv }" placeholder="xxx"/>
+        <br><br>
         <button type="submit" id="edit" onClick = "if(checkPass()) { sendEmail()} else {return false}" value="Submit">
             Submit Changes</button>
     </form>
