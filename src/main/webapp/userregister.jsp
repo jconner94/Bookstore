@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <label><b>*Email</b></label>
-                <td><input type="text" name="email" placeholder="Email..." id="username" required/></td>
+                <td><input type="text" name="email" placeholder="Email..." id="username2" required/></td>
             </tr>
             <tr>
                 <label><b>*Password</b></label>
@@ -160,7 +160,7 @@
             </tr>
 
         </table>
-        <button type="submit" id="create" onClick = "return checkPass();" value="Submit">
+        <button type="submit" id="create" onClick = "return checkPass(); sendEmail()" value="Submit">
             Create Account</button>
     </form>
 </div>
@@ -224,3 +224,23 @@
     });
 </script>
 </html>
+<script
+        src="https://smtpjs.com/v3/smtp.js">
+</script>
+
+<script type="text/javascript">
+    function sendEmail() {
+        var form1 = document.getElementById('createAcct');
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: String(form1.username2.value),
+            From: "bookstore3c@gmail.com",
+            Subject: "Account Creation Successful",
+            Body: "This is a confirmation email letting you know that you have created an account on the bookstore website",
+        })
+        alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
+    }
+</script>
+</head>
