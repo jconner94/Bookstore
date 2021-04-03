@@ -17,7 +17,7 @@
 
 <body>
 <nav>
-    <a href="/home" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
+    <a href="hello-servlet" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
     <ul class="links">
         <li><a href="/home" style="text-decoration: none; color: white">Home</a></li>
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
@@ -33,35 +33,35 @@
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
         <table style="with: 80%">
             <tr>
-                <td>*First Name</td>
+                <label><b>*First Name</b></label>
                 <td><input type="text" name="firstName" placeholder="First Name..." id="username" required/></td>
             </tr>
             <tr>
-                <td>*Last Name</td>
+                <label><b>*Last Name</b></label>
                 <td><input type="text" name="lastName" placeholder="Last Name..." id="username" required/></td>
             </tr>
             <tr>
-                <td>*Email</td>
+                <label><b>*Email</b></label>
                 <td><input type="text" name="email" placeholder="Email..." id="username" required/></td>
             </tr>
             <tr>
-                <td>*Password</td>
+                <label><b>*Password</b></label>
                 <td><input type="password" name="password" placeholder="Password..." id="username" required/></td>
             </tr>
             <tr>
-                <td>*Confirm Password</td>
+                <label><b>*Confirm Password</b></label>
                 <td><input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/></td>
             </tr>
             <tr>
-                <td>Street Address</td>
+                <label><b>Street Address</b></label>
                 <td><input type="text" name="street" placeholder="Street Address..." id="username" /></td>
             </tr>
             <tr>
-                <td>City</td>
+                <label><b>City</b></label>
                 <td><input type="text" name="city" placeholder="City..." id="username" /></td>
             </tr>
             <tr>
-                <td>State</td>
+                <label><b>State</b></label>
                 <td><select name="state">
                     <option value=""></option>
                     <option value="AL">Alabama</option>
@@ -118,12 +118,12 @@
                 </select></td>
             </tr>
             <tr>
-                <td>Credit Card Number</td>
+                <label><b>Credit Card Number</b></label>
                 <td><input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" /></td>
             </tr>
             <tr>
-                <td>Card Expiration Date</td>
+                <label><b>Card Expiration Date</b></label>
                 <td><select name="expMonth">
                     <option value=""></option>
                     <option value="01">01-January</option>
@@ -154,7 +154,7 @@
                     </select></td>
             </tr>
             <tr>
-                <td>Security Code</td>
+                <label><b>Security Code</b></label>
                 <td><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" /></td>
             </tr>
