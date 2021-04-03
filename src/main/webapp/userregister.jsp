@@ -34,35 +34,35 @@
         <table style="with: 80%">
             <tr>
                 <label><b>*First Name</b></label>
-                <td><input type="text" name="firstName" placeholder="First Name..." id="username" required/></td>
+                <input type="text" name="firstName" placeholder="First Name..." id="username" required/>
             </tr>
             <tr>
                 <label><b>*Last Name</b></label>
-                <td><input type="text" name="lastName" placeholder="Last Name..." id="username" required/></td>
+                <input type="text" name="lastName" placeholder="Last Name..." id="username" required/>
             </tr>
             <tr>
                 <label><b>*Email</b></label>
-                <td><input type="text" name="email" placeholder="Email..." id="username2" required/></td>
+                <input type="text" name="email" placeholder="Email..." id="username2" required/>
             </tr>
             <tr>
                 <label><b>*Password</b></label>
-                <td><input type="password" name="password" placeholder="Password..." id="username" required/></td>
+                <input type="password" name="password" placeholder="Password..." id="username" required/>
             </tr>
             <tr>
                 <label><b>*Confirm Password</b></label>
-                <td><input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/></td>
+                <input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/>
             </tr>
             <tr>
                 <label><b>Street Address</b></label>
-                <td><input type="text" name="street" placeholder="Street Address..." id="username" /></td>
+                <input type="text" name="street" placeholder="Street Address..." id="username" />
             </tr>
             <tr>
                 <label><b>City</b></label>
-                <td><input type="text" name="city" placeholder="City..." id="username" /></td>
+                <input type="text" name="city" placeholder="City..." id="username" />
             </tr>
             <tr>
                 <label><b>State</b></label>
-                <td><select name="state">
+                <select name="state">
                     <option value=""></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -115,16 +115,16 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                </select></td>
+                </select>
             </tr>
             <tr>
                 <label><b>Credit Card Number</b></label>
-                <td><input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                           autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" /></td>
+                <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                           autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
             </tr>
             <tr>
                 <label><b>Card Expiration Date</b></label>
-                <td><select name="expMonth">
+                <select name="expMonth">
                     <option value=""></option>
                     <option value="01">01-January</option>
                     <option value="02">02-February</option>
@@ -151,20 +151,27 @@
                         <option value="28">2028</option>
                         <option value="29">2029</option>
                         <option value="30">2030</option>
-                    </select></td>
+                    </select>
             </tr>
             <tr>
                 <label><b>Security Code</b></label>
-                <td><input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
-                           autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" /></td>
+                <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
+                           autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
             </tr>
 
         </table>
-        <button type="submit" id="create" onClick = "return checkPass(); sendEmail()" value="Submit">
+        <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
             Create Account</button>
     </form>
 </div>
 </body>
+
+<script>
+    function funcCaller(){
+        checkPass();
+        sendEmail();
+    }
+</script>
 
 <script>
     function checkPass() {
