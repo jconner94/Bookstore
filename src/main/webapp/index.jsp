@@ -21,7 +21,7 @@
         <a href="index.php" style="..."><h1 class="title">Bookstore</h1></a>
         <ul class="links">
             <li><a href="index.php" style="...">Home</a></li>
-            <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
+            <li><a href="register-servlet" style="text-decoration: none; color: white">Contact</a></li>
             <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
         </ul>
     </nav>
