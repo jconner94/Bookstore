@@ -36,10 +36,10 @@
         <label><b>User ID</b></label>
             <label><b><input type="text" name="userID" value=${userID } readonly="readonly"/></b></label>
 
-                <label><b>First Name</td>
+                <label><b>First Name</b></label>
                     <label><b><input type="text" name="firstName" value=${firstName } required/></b></label>
 
-                <label><b>Last Name</td>
+                <label><b>Last Name</b></label>
                     <label><b><input type="text" name="lastName" value=${lastName } required/></b></label>
 
                 <label><b>Email</b></label>
