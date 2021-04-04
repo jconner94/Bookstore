@@ -46,7 +46,7 @@
                 <input type="text" name="email" id="email" value="${email}" readonly/>
         <br><br>
                 <label><b>Password</b></label><br>
-                <input type="password" name="password" placeholder="Password" required/>
+                <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
         <br><br>
                 <label><b>Confirm Password</b></label><br>
                 <input type="password" name="confPassword" placeholder="Confirm Password..." required/>

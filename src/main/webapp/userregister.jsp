@@ -40,8 +40,8 @@
                 <label><b>*Email</b></label><br>
                 <input type="text" name="email" placeholder="Email..." id="username2" required/>
                 <br><br>
-                <label><b>*Password</b></label><br>
-                <input type="password" name="password" placeholder="Password..." id="username" required/>
+                <label><b>*Password (Must contain at least one uppercase letter, one lowercase letter, one number, and must be at least 8 characters long) </b></label><br>
+                <input type="password" name="password" placeholder="Password..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="username" required/>
         <br><br>
                 <label><b>*Confirm Password</b></label><br>
                 <input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/>
@@ -128,21 +128,21 @@
                     <option value="10">10-October</option>
                     <option value="11">11-November</option>
                     <option value="12">12-December</option>
+                </select><!--<br>
+        <br><br>-->
+                <select name="expYear">
+                    <option value=""></option>
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="24">2024</option>
+                    <option value="25">2025</option>
+                    <option value="26">2026</option>
+                    <option value="27">2027</option>
+                    <option value="28">2028</option>
+                    <option value="29">2029</option>
+                    <option value="30">2030</option>
                 </select><br>
-        <br><br>
-                    <select name="expYear">
-                        <option value=""></option>
-                        <option value="21">2021</option>
-                        <option value="22">2022</option>
-                        <option value="23">2023</option>
-                        <option value="24">2024</option>
-                        <option value="25">2025</option>
-                        <option value="26">2026</option>
-                        <option value="27">2027</option>
-                        <option value="28">2028</option>
-                        <option value="29">2029</option>
-                        <option value="30">2030</option>
-                    </select><br>
         <br><br>
                 <label><b>Security Code</b></label><br>
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
@@ -163,7 +163,6 @@
 
 <script>
     function checkPass() {
-        console.log("in checkPass");
         let form1 = document.getElementById('createAcct');
         if(form1.password.value !== form1.confPassword.value) {
             alert("Password must match confirmation!");

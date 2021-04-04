@@ -28,30 +28,31 @@
         <li><a href="Shop.html"><img src="NavIcons/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
-<div align="center">
+<div class = "login">
     <h1>Create Account (*=required)</h1>
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
-                <label><b>*First Name</b></label>
+                <label><b>*First Name</b></label><br>
                 <input type="text" name="firstName" placeholder="First Name..." id="username" required/>
-
-                <label><b>*Last Name</b></label>
+                 <br><br>
+                <label><b>*Last Name</b></label><br>
                 <input type="text" name="lastName" placeholder="Last Name..." id="username" required/>
-                <label><b>*Email</b></label>
+                <br><br>
+                <label><b>*Email</b></label><br>
                 <input type="text" name="email" placeholder="Email..." id="username2" required/>
-
-                <label><b>*Password</b></label>
-                <input type="password" name="password" placeholder="Password..." id="username" required/>
-
-                <label><b>*Confirm Password</b></label>
+                <br><br>
+                <label><b>*Password (Must contain at least one uppercase letter, one lowercase letter, one number, and must be at least 8 characters long) </b></label><br>
+                <input type="password" name="password" placeholder="Password..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="username" required/>
+        <br><br>
+                <label><b>*Confirm Password</b></label><br>
                 <input type="password" name="confPassword" placeholder="Confirm Password..." id="username" required/>
-
-                <label><b>Street Address</b></label>
+        <br><br>
+                <label><b>Street Address</b></label><br>
                 <input type="text" name="street" placeholder="Street Address..." id="username" />
-
-                <label><b>City</b></label>
+        <br><br>
+                <label><b>City</b></label><br>
                 <input type="text" name="city" placeholder="City..." id="username" />
-
-                <label><b>State</b></label>
+        <br><br>
+                <label><b>State</b></label><br>
                 <select name="state">
                     <option value=""></option>
                     <option value="AL">Alabama</option>
@@ -105,12 +106,13 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                </select>
-
-                <label><b>Credit Card Number</b></label>
+                </select><br>
+        <br><br>
+                <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
-                <label><b>Card Expiration Date</b></label>
+        <br><br>
+                <label><b>Card Expiration Date</b></label><br>
 
                 <select name="expMonth">
                     <option value=""></option>
@@ -126,25 +128,26 @@
                     <option value="10">10-October</option>
                     <option value="11">11-November</option>
                     <option value="12">12-December</option>
-                </select>
-
-                    <select name="expYear">
-                        <option value=""></option>
-                        <option value="21">2021</option>
-                        <option value="22">2022</option>
-                        <option value="23">2023</option>
-                        <option value="24">2024</option>
-                        <option value="25">2025</option>
-                        <option value="26">2026</option>
-                        <option value="27">2027</option>
-                        <option value="28">2028</option>
-                        <option value="29">2029</option>
-                        <option value="30">2030</option>
-                    </select>
-
-                <label><b>Security Code</b></label>
+                </select><!--<br>
+        <br><br>-->
+                <select name="expYear">
+                    <option value=""></option>
+                    <option value="21">2021</option>
+                    <option value="22">2022</option>
+                    <option value="23">2023</option>
+                    <option value="24">2024</option>
+                    <option value="25">2025</option>
+                    <option value="26">2026</option>
+                    <option value="27">2027</option>
+                    <option value="28">2028</option>
+                    <option value="29">2029</option>
+                    <option value="30">2030</option>
+                </select><br>
+        <br><br>
+                <label><b>Security Code</b></label><br>
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
+        <br><br>
         <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
             Create Account</button>
     </form>
@@ -160,7 +163,6 @@
 
 <script>
     function checkPass() {
-        console.log("in checkPass");
         let form1 = document.getElementById('createAcct');
         if(form1.password.value !== form1.confPassword.value) {
             alert("Password must match confirmation!");

@@ -12,13 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "registerServlet", value = "/register-servlet")
 public class RegistrationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private String message;
 
     private UserDao userDao = new UserDao();
-
-    public void init() {
-        message = "Hello World!";
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -26,13 +21,6 @@ public class RegistrationServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
         dispatcher.forward(request, response);
-        /* response.setContentType("text/html");
-
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
