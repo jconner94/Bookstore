@@ -27,6 +27,8 @@
     <ul class="icons">
         <li><a href="search.html"><img src="<c:url value="${"resources/search-icon.svg"} alt="" class="top-icon">tempSearch</a></li>
         <li><a href="edit-servlet"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon">tempCart</a></li>
+        <li><a href="index.jsp">LOGOUT</a></li>
+
     </ul>
 </nav>
 <main>
