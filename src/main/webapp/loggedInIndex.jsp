@@ -37,7 +37,7 @@
             <h2 class="section-title" id="demo">FEATURED</h2>
             <a href="Sample1.html"><img src="SampleBook1.jpg" class="images" height="500" width="300" alt=""></a>
             <br><br>
-            <button type="submit" id="submit" >Add to Cart</button>
+            <button type="submit" id="submit2" >Add to Cart</button>
             <br><br>
         </div>
 
@@ -45,7 +45,7 @@
             <h2 class="section-title" id="demo2">TOP SELLERS</h2>
             <a href="Sample2.html"><img src="resources/SampleBook2.jpg" class="images" height="500" width="300" alt=""></a>
             <br><br>
-            <button type="submit" id="submit" >Add to Cart</button>
+            <button type="submit" id="submit2" >Add to Cart</button>
             <br><br>
         </div>
 

@@ -152,6 +152,15 @@ footer {
     border-radius: 20px;
 }
 
+#submit2 {
+    background-color: #2c209e;
+    color: white;
+    border: blue;
+    padding: 10px 15px;
+    width: 80%;
+    border-radius: 20px;
+}
+
 #buyAgain {
     background-color: #2c209e;
     color: white;
