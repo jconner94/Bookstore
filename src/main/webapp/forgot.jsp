@@ -29,7 +29,7 @@
 </nav>
 <main>
     <div class="login">
-        <form action="forgot.html" id="myForm">
+        <form action="forgot.jsp" id="myForm">
             <h1>Forgot Password</h1>
             <br>
             <label><b>Enter the email associated with your account, and we will send you a code to reset your password:</b></label><br>
@@ -40,7 +40,7 @@
         </form>
     </div>
     <div class="login">
-        <form action="forgot.html" id="passForm">
+        <form action="successfulForgot.html" id="passForm">
             <h1>Reset Password</h1>
             <br>
             <label><b>Enter the code sent via email, then update your password:</b></label><br>
