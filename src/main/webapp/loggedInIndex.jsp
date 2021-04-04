@@ -18,16 +18,14 @@
 
 <body>
 <nav>
-    <a href="index.php" style="..."><h1 class="title">Bookstore</h1></a>
+    <a href="loggedInIndex.jsp" style="..."><h1 class="title">Bookstore</h1></a>
     <ul class="links">
-        <li><a href="index.php" style="...">Home</a></li>
+        <li><a href="loggedInIndex.jsp" style="...">Home</a></li>
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="login-servlet"><img src="<c:url value="${"resources/search-icon.svg"} alt="" class="top-icon">tempSearch</a></li>
-        <li><a href="register-servlet">
-            <!--<img src="/profile-icon.svg"--> class="top-icon" id="entry" alt="">tempLogin</a></li>
+        <li><a href="search.html"><img src="<c:url value="${"resources/search-icon.svg"} alt="" class="top-icon">tempSearch</a></li>
         <li><a href="edit-servlet"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon">tempCart</a></li>
     </ul>
 </nav>
