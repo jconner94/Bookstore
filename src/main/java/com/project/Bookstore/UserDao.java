@@ -143,4 +143,8 @@ public class UserDao {
 
         return result;
     } // getLoginInfo
+
+    public int changePassword(String password) throws ClassNotFoundException {
+        return 0;
+    }
 }
