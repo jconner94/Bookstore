@@ -20,7 +20,7 @@
     <nav>
         <a href="index.jsp" style="..."><h1 class="title">Bookstore</h1></a>
         <ul class="links">
-            <li><a href="index.php" style="...">Home</a></li>
+            <li><a href="index.jsp" style="...">Home</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
             <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
         </ul>
@@ -28,7 +28,7 @@
             <li><a href="login-servlet"><!--img src="search-icon.svg"--> alt="" class="top-icon"/>LOGIN</a></li>
             <li><a href="register-servlet">
                 <!--<img src="/profile-icon.svg"--> class="top-icon" id="entry" alt=""/>REGISTER</a></li>
-            <li><a href="edit-servlet"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon"/>EDIT</a></li>
+            <li><a href="search.html"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon"/>SEARCH</a></li>
         </ul>
     </nav>
     <main>
