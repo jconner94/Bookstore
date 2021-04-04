@@ -25,7 +25,7 @@
             <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
         </ul>
         <ul class="icons">
-            <li><a href="login-servlet"><!--img src="search-icon.svg"--> alt="" class="top-icon"/>LOGIN</a></li>
+            <li><a href="login-servlet"><<!--img src="search-icon.svg"--> alt="" class="top-icon">LOGIN</a></li>
             <li><a href="register-servlet">
                 <!--<img src="/profile-icon.svg"--> class="top-icon" id="entry" alt=""/>REGISTER</a></li>
             <li><a href="search.html"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon"/>SEARCH</a></li>

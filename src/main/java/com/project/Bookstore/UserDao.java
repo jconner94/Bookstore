@@ -118,10 +118,10 @@ public class UserDao {
         return result;
     } // editUserInfo
 
-    public String[] getLoginInfo(String email, String password) throws ClassNotFoundException {
-        String LOGIN_INFO_SQL = "SELECT userId, firstName FROM users WHERE email = ? AND password = ? limit 1";
+    public int getLoginInfo(String email, String password) throws ClassNotFoundException {
+        String LOGIN_INFO_SQL = "SELECT userID FROM `users` WHERE email = ? AND password = ?";
 
-        String[] result = new String[2];
+        int result = -1;
 
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -131,8 +131,11 @@ public class UserDao {
             loginStatement.setString(1, email);
             loginStatement.setString(2, password);
             ResultSet rs = loginStatement.executeQuery();
-            result[0] = rs.getString(1);
-            result[1] = rs.getString(2);
+
+            if(rs.next()) {
+                result = rs.getInt("userID");
+            }
+
         } catch(SQLException e) {
             System.out.println("SQL Error in getLoginInfo");
             e.printStackTrace();
