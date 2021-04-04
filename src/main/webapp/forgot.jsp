@@ -32,10 +32,25 @@
         <form action="forgot.html" id="myForm">
             <h1>Forgot Password</h1>
             <br>
-            <label><b>Enter the email associated with your account, and we will send you your password:</b></label><br>
+            <label><b>Enter the email associated with your account, and we will send you a code to reset your password:</b></label><br>
             <input type="text" placeholder="email..." id="username" required>
             <br><br>
             <button type="submit" id="submit" onClick="sendEmail()">Send Me Email</button>
+            <br><br>
+        </form>
+    </div>
+    <div class="login">
+        <form action="forgot.html" id="passForm">
+            <h1>Reset Password</h1>
+            <br>
+            <label><b>Enter the code sent via email, then update your password:</b></label><br>
+            <input type="text" placeholder="code..." id="username" required>
+            <br><br>
+            <input type="text" placeholder="new password..." id="username2" required>
+            <br><br>
+            <input type="text" placeholder="confirm password..." id="username3" required>
+            <br><br>
+            <button type="submit" id="submit" onClick="if(checkCode()) {if(checkPass()){sendEmail()} else {return false}}else return false">Send Me Email</button>
             <br><br>
         </form>
     </div>
@@ -58,9 +73,33 @@
             To: String(form1.username.value),
             From: "bookstore3c@gmail.com",
             Subject: "Forgot Password",
-            Body: "Hello " + "${firstName}" ", \nThe password to your account is, " + "${password}",
+            Body: "Use this code to reset your password: \n 08923471",
         })
         alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
+    }
+</script>
+
+<script>
+    function checkPass() {
+        let form1 = document.getElementById('passForm');
+        if(form1.username2.value !== form1.username3.value) {
+            alert("Password must match confirmation!");
+            form1.username2.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<script>
+    function checkCode() {
+        let form1 = document.getElementById('passForm');
+        if(String(form1.username.value) !== "08923471") {
+            alert("Invalid code!");
+            form1.username.focus();
+            return false;
+        }
+        return true;
     }
 </script>
 </head>
