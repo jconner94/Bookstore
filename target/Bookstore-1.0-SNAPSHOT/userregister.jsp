@@ -31,6 +31,7 @@
 <div class = "login">
     <h1>Create Account (*=required)</h1>
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
+        <br><br>
                 <label><b>*First Name</b></label><br>
                 <input type="text" name="firstName" placeholder="First Name..." id="username" required/>
                  <br><br>
@@ -111,7 +112,6 @@
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
-        <br><br>
                 <label><b>Card Expiration Date</b></label><br>
 
                 <select name="expMonth">
@@ -148,18 +148,11 @@
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
         <br><br>
-        <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
+        <button type="submit" id="create" onClick = "if(checkPass()) {sendEmail} else {return false}" value="Submit">
             Create Account</button>
     </form>
 </div>
 </body>
-
-<script>
-    function funcCaller(){
-        checkPass();
-        sendEmail();
-    }
-</script>
 
 <script>
     function checkPass() {

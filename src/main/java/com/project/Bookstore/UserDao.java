@@ -1,5 +1,6 @@
 package com.project.Bookstore;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -50,6 +51,7 @@ public class UserDao {
 
             result = insertUserStatement.executeUpdate();
         } catch(SQLException e) {
+            System.out.println("SQL Error in registerUser");
             e.printStackTrace();
         } // try/catch
 
@@ -75,6 +77,7 @@ public class UserDao {
                 }
             }
         } catch(SQLException e) {
+            System.out.println("SQL Error in fetchUserInfo");
             e.printStackTrace();
         } // try/catch
 
@@ -108,9 +111,33 @@ public class UserDao {
 
             result = editStatement.executeUpdate();
         } catch(SQLException e) {
+            System.out.println("SQL Error in editUserInfo");
             e.printStackTrace();
         }
 
         return result;
     } // editUserInfo
+
+    public String[] getLoginInfo(String email, String password) throws ClassNotFoundException {
+        String LOGIN_INFO_SQL = "SELECT userId, firstName FROM users WHERE email = ? AND password = ? limit 1";
+
+        String[] result = new String[2];
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement loginStatement = conn.prepareStatement(LOGIN_INFO_SQL);
+            loginStatement.setString(1, email);
+            loginStatement.setString(2, password);
+            ResultSet rs = loginStatement.executeQuery();
+            result[0] = rs.getString(1);
+            result[1] = rs.getString(2);
+        } catch(SQLException e) {
+            System.out.println("SQL Error in getLoginInfo");
+            e.printStackTrace();
+        }
+
+        return result;
+    } // getLoginInfo
 }

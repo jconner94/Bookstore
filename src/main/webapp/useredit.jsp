@@ -7,7 +7,7 @@
     <meta charset="ISO-8859-1">
     <title>Account | Home</title>
 
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="index.css">
 
     <style>
         main {

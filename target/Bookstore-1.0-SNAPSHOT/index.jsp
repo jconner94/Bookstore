@@ -25,7 +25,7 @@
             <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
         </ul>
         <ul class="icons">
-            <li><a href="search.html"><img <!--src="/resources/search-icon.svg"--> alt="" class="top-icon">tempSearch</a></li>
+            <li><a href="login-servlet"><img src="<c:url value="${"resources/search-icon.svg"} alt="" class="top-icon">tempSearch</a></li>
             <li><a href="register-servlet">
                 <!--<img src="/profile-icon.svg"--> class="top-icon" id="entry" alt="">tempLogin</a></li>
             <li><a href="edit-servlet"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon">tempCart</a></li>
