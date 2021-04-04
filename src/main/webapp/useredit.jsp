@@ -35,27 +35,27 @@
 
         <label><b>User ID</b></label><br>
         <input type="text" name="userID" value="${userID}" readonly/>
-
+<br><br>
                 <label><b>First Name</b></label><br>
-                <input type="text" name="firstName" value="${firstName}" required/>
+                <input type="text" name="firstName" id = "username" value="${firstName}" required/>
         <br><br>
                 <label><b>Last Name</b></label><br>
-                <input type="text" name="lastName" value="${lastName}"required>
+                <input type="text" name="lastName" id = "username" value="${lastName}"required>
         <br><br>
                 <label><b>Email</b></label><br>
                 <input type="text" name="email" id="email" value="${email}" readonly/>
         <br><br>
                 <label><b>Password</b></label><br>
-                <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+                <input type="password" name="password" id = "username" placeholder="Password" required/>
         <br><br>
                 <label><b>Confirm Password</b></label><br>
-                <input type="password" name="confPassword" placeholder="Confirm Password..." required/>
+                <input type="password" name="confPassword" id = "username" placeholder="Confirm Password..." required/>
         <br><br>
                 <label><b>Street Address</b></label><br>
-                <input type="text" name="street" value="${street}"/>
+                <input type="text" name="street" id = "username" value="${street}"/>
         <br><br>
                 <label><b>City</b></label><br>
-                <input type="text" name="city" value="${city}"/>
+                <input type="text" name="city" id = "username" value="${city}"/>
         <br><br>
                 <label><b>State</b></label><br>
                 <select name="state">
@@ -115,7 +115,7 @@
 
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                           maxlength="19" value = "${cardNum}" placeholder="xxxx xxxx xxxx xxxx"/>
+                           maxlength="19" id = "username" value = "${cardNum}" placeholder="xxxx xxxx xxxx xxxx"/>
 
                 <label><b>Card Expiration Date</b></label><br>
                 <select name="expMonth">

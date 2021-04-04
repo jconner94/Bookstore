@@ -31,6 +31,7 @@
 <div class = "login">
     <h1>Create Account (*=required)</h1>
     <form action="<%= request.getContextPath() %>/register-servlet" id="createAcct" method="post">
+        <br><br>
                 <label><b>*First Name</b></label><br>
                 <input type="text" name="firstName" placeholder="First Name..." id="username" required/>
                  <br><br>
@@ -111,7 +112,6 @@
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            autocomplete="Card Number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="username" />
-        <br><br>
                 <label><b>Card Expiration Date</b></label><br>
 
                 <select name="expMonth">
