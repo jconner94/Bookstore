@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         String[] userInfo = {};
 
         try {
-            userDao.getLoginInfo(email, password);
+            userInfo = userDao.getLoginInfo(email, password);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
