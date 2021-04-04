@@ -46,7 +46,7 @@
             <label><b>Enter the code sent via email, then update your password:</b></label><br>
             <input type="text" placeholder="code..." id="username" required>
             <br><br>
-            <input type="text" placeholder="new password..." id="username2" required>
+            <input type="text" name="password" placeholder="new password..." id="username2" required>
             <br><br>
             <input type="text" placeholder="confirm password..." id="username3" required>
             <br><br>
