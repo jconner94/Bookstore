@@ -22,14 +22,16 @@
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="NavIcons/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="account.html"><img src="NavIcons/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="NavIcons/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="register-servlet">
+            <img src="${pageContext.request.contextPath}/resources/profile-icon.svg" class="top-icon" id="entry" alt=""/></a></li>
+        <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet">Y</a></li>
     </ul>
 </nav>
 <main>
     <div class="login">
-        <form action="forgot.html" id="myForm">
+        <form action="forgot.jsp" id="myForm">
             <h1>Forgot Password</h1>
             <br>
             <label><b>Enter the email associated with your account, and we will send you a code to reset your password:</b></label><br>
@@ -40,7 +42,7 @@
         </form>
     </div>
     <div class="login">
-        <form action="forgot.html" id="passForm">
+        <form action="successfulForgot.html" id="passForm">
             <h1>Reset Password</h1>
             <br>
             <label><b>Enter the code sent via email, then update your password:</b></label><br>

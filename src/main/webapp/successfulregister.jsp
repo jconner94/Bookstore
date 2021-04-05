@@ -17,9 +17,11 @@
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="NavIcons/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="account.html"><img src="NavIcons/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="NavIcons/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="register-servlet">
+            <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
     </ul>
 </nav>
 <main>

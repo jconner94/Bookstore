@@ -18,24 +18,25 @@
 
 <body>
 <nav>
-    <a href="loggedInIndex.jsp" style="..."><h1 class="title">Bookstore</h1></a>
+    <a href="loggedInIndex.jsp" style="text-decoration: none; color: white""><h1 class="title">Bookstore</h1></a>
     <ul class="links">
-        <li><a href="loggedInIndex.jsp" style="...">Home</a></li>
+        <li><a href="loggedInIndex.jsp" style="text-decoration: none; color: white"">Home</a></li>
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="<c:url value="${"resources/search-icon.svg"} alt="" class="top-icon">tempSearch</a></li>
-        <li><a href="edit-servlet"><img <!--src="/resources/cart-icon.svg"--> alt="" class="top-icon">tempCart</a></li>
-        <li><a href="index.jsp">LOGOUT</a></li>
-
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
+        <li><a href="register-servlet">
+            <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet">Y</a></li>
     </ul>
 </nav>
 <main>
     <div class="featured-items">
         <div class="book-window">
             <h2 class="section-title" id="demo">FEATURED</h2>
-            <a href="Sample1.html"><img src="SampleBook1.jpg" class="images" height="500" width="300" alt=""></a>
+            <a href="Sample1.html"><img src="resources/TheDevilInTheWhiteCity.jpg" class="images" height="500" width="300" alt=""></a>
             <br><br>
             <button type="submit" id="submit2" >Add to Cart</button>
             <br><br>
@@ -43,7 +44,7 @@
 
         <div class="book-window">
             <h2 class="section-title" id="demo2">TOP SELLERS</h2>
-            <a href="Sample2.html"><img src="resources/SampleBook2.jpg" class="images" height="500" width="300" alt=""></a>
+            <a href="Sample2.html"><img src="resources/HarryPotterAndTheChamberOfSecrets.jpg" class="images" height="500" width="300" alt=""></a>
             <br><br>
             <button type="submit" id="submit2" >Add to Cart</button>
             <br><br>
