@@ -18,9 +18,9 @@
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="useredit.jsp"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="useredit.jsp"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
+        <li><a href="shop.html"><img src="${pageContext.request.contextPath}/resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
 <main>
