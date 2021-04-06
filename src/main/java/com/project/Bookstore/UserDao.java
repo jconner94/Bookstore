@@ -11,13 +11,15 @@ public class UserDao {
     private final String jdbcUrl = "jdbc:mysql://localhost:3306/bookstore";
     private final String dbUser = "root";
     private final String dbPass = "root";
+    private final String encrypt = "jcTZkjKW";
 
     public int registerUser(User user) throws ClassNotFoundException {
         String FETCH_ID_SQL = "SELECT MAX(userID) FROM users";
         String INSERT_USERS_SQL = "INSERT INTO users" +
                 " (userID, firstName, lastName, email, password," +
                 " street, city, state, cardNum, expMonth, expYear, cvv)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                " VALUES (?, ?, ?, ?, aes_encrypt(?, ?), ?, ?, ?, aes_encrypt(?, ?)," +
+                " ?, ?, aes_encrypt(?, ?));";
 
         int result = 0;
 
@@ -41,13 +43,18 @@ public class UserDao {
             insertUserStatement.setString(3, user.getLastName());
             insertUserStatement.setString(4, user.getEmail());
             insertUserStatement.setString(5, user.getPassword());
-            insertUserStatement.setString(6, user.getStreet());
-            insertUserStatement.setString(7, user.getCity());
-            insertUserStatement.setString(8, user.getState());
-            insertUserStatement.setString(9,  user.getCardNum());
-            insertUserStatement.setString(10, user.getExpMonth());
-            insertUserStatement.setString(11,  user.getExpYear());
-            insertUserStatement.setString(12, user.getCvv());
+            insertUserStatement.setString(6, encrypt);
+            insertUserStatement.setString(7, user.getStreet());
+            insertUserStatement.setString(8, user.getCity());
+            insertUserStatement.setString(9, user.getState());
+            insertUserStatement.setString(10,  user.getCardNum());
+            insertUserStatement.setString(11, encrypt);
+            insertUserStatement.setString(12, user.getExpMonth());
+            insertUserStatement.setString(13,  user.getExpYear());
+            insertUserStatement.setString(14, user.getCvv());
+            insertUserStatement.setString(15, encrypt);
+
+            System.out.println(insertUserStatement);
 
             result = insertUserStatement.executeUpdate();
         } catch(SQLException e) {
@@ -59,7 +66,7 @@ public class UserDao {
     } // registerUser
 
     public String[] fetchUserInfo(User user) throws ClassNotFoundException {
-        String FETCH_USER_INFO = "SELECT * FROM users WHERE userID = 1"; // Needs updating for dynamic use
+        String FETCH_USER_INFO = "SELECT * FROM users WHERE userID = ?";
 
         String[] result = new String[12];
 
@@ -68,6 +75,7 @@ public class UserDao {
         try {
             Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
             PreparedStatement userStatement = conn.prepareStatement(FETCH_USER_INFO);
+            userStatement.setInt(1, user.getUserID());
             ResultSet rs = userStatement.executeQuery();
 
             if(rs.next()) {
@@ -86,8 +94,8 @@ public class UserDao {
 
     public int editUserInfo(User user) throws ClassNotFoundException {
         String UPDATE_USER_SQL = "UPDATE users SET firstName = ?, lastName = ?," +
-                "password = ?, street = ?, city = ?, state = ?, cardNum = ?," +
-                "expMonth = ?, expYear = ?, cvv = ?" +
+                "password = aes_encrypt(?, ?), street = ?, city = ?, state = ?, " +
+                "cardNum = aes_encrypt(?, ?), expMonth = ?, expYear = ?, cvv = aes_encrypt(?, ?)" +
                 "WHERE userID = ?";
 
         int result = 0;
@@ -100,14 +108,17 @@ public class UserDao {
             editStatement.setString(1, user.getFirstName());
             editStatement.setString(2,  user.getLastName());
             editStatement.setString(3, user.getPassword());
-            editStatement.setString(4, user.getStreet());
-            editStatement.setString(5, user.getCity());
-            editStatement.setString(6, user.getState());
-            editStatement.setString(7, user.getCardNum());
-            editStatement.setString(8, user.getExpMonth());
-            editStatement.setString(9, user.getExpYear());
-            editStatement.setString(10, user.getCvv());
-            editStatement.setInt(11, user.getUserID());
+            editStatement.setString(4, encrypt);
+            editStatement.setString(5, user.getStreet());
+            editStatement.setString(6, user.getCity());
+            editStatement.setString(7, user.getState());
+            editStatement.setString(8, user.getCardNum());
+            editStatement.setString(9, encrypt);
+            editStatement.setString(10, user.getExpMonth());
+            editStatement.setString(11, user.getExpYear());
+            editStatement.setString(12, user.getCvv());
+            editStatement.setString(13, encrypt);
+            editStatement.setInt(14, user.getUserID());
 
             result = editStatement.executeUpdate();
         } catch(SQLException e) {
@@ -118,10 +129,10 @@ public class UserDao {
         return result;
     } // editUserInfo
 
-    public int getLoginInfo(String email, String password) throws ClassNotFoundException {
-        String LOGIN_INFO_SQL = "SELECT userID FROM `users` WHERE email = ? AND password = ?";
+    public User getLoginInfo(String email, String password) throws ClassNotFoundException {
+        String LOGIN_INFO_SQL = "SELECT userID, firstName, lastName FROM `users` WHERE email = ? AND password = aes_encrypt(?, ?)";
 
-        int result = -1;
+        User user = null;
 
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -130,10 +141,14 @@ public class UserDao {
             PreparedStatement loginStatement = conn.prepareStatement(LOGIN_INFO_SQL);
             loginStatement.setString(1, email);
             loginStatement.setString(2, password);
+            loginStatement.setString(3, encrypt);
             ResultSet rs = loginStatement.executeQuery();
 
             if(rs.next()) {
-                result = rs.getInt("userID");
+                int userID = rs.getInt("userID");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                user = new User(userID, firstName, lastName, email);
             }
 
         } catch(SQLException e) {
@@ -141,10 +156,27 @@ public class UserDao {
             e.printStackTrace();
         }
 
-        return result;
+        return user;
     } // getLoginInfo
 
-    public int changePassword(String password) throws ClassNotFoundException {
-        return 0;
+    public int changePassword(int userID, String password) throws ClassNotFoundException {
+        String PASSWORD_CHANGE_SQL = "UPDATE users SET password = aes_encrypt(?, ?), WHERE userID = ?";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement passwordStatement = conn.prepareStatement(PASSWORD_CHANGE_SQL);
+            passwordStatement.setString(1, password);
+            passwordStatement.setString(2, encrypt);
+            passwordStatement.setInt(3, userID);
+            result = passwordStatement.executeUpdate();
+        } catch(SQLException e) {
+            System.out.println("SQL Error in changePassword");
+        } // try/catch
+
+        return result;
     }
 }

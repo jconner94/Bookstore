@@ -14,6 +14,15 @@ public class User {
     private String expYear;
     private String cvv;
 
+    public User() { }
+
+    public User(int userID, String firstName, String lastName, String email) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public int getUserID() {
         return userID;
     } // getUserId

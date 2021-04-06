@@ -37,7 +37,7 @@
         <input type="text" name="email" placeholder="Email..." id="username2" required/>
         <br><br>
         <label><b>Password</b></label><br>
-        <input type="password" name="password" placeholder="Password..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="username" required/>
+        <input type="password" name="password" placeholder="Password..." id="username" required/>
         <br><br>
         <button type="submit" id="create" onClick = "funcCaller()" value="Submit">
             Login</button>

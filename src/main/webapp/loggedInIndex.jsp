@@ -25,8 +25,8 @@
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
-        <li><a href="register-servlet">
+        <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
+        <li><a href="edit-servlet">
             <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
         <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
         <li><a href="forgot-servlet">Y</a></li>

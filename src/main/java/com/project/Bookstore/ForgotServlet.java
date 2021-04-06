@@ -27,7 +27,7 @@ public class ForgotServlet extends HttpServlet {
 
         try {
             String[] userInfo = userDao.fetchUserInfo(user);
-            request.setAttribute("password", userInfo[0]);
+            request.setAttribute("userID", userInfo[0]);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/forgot.jsp");
             dispatcher.forward(request, response);
@@ -38,13 +38,11 @@ public class ForgotServlet extends HttpServlet {
     } // doGet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int userID = Integer.parseInt(request.getParameter("userID"));
         String password = request.getParameter("password");
 
-        User user = new User();
-        user.setPassword(password);
-
         try {
-            userDao.editUserInfo(user);
+            userDao.changePassword(userID, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } // try/catch

@@ -48,9 +48,9 @@
             <label><b>Enter the code sent via email, then update your password:</b></label><br>
             <input type="text" placeholder="code..." id="username" required>
             <br><br>
-            <input type="text" name="password" placeholder="new password..." id="username2" required>
+            <input type="password" name="password" placeholder="new password..." id="username2" required>
             <br><br>
-            <input type="text" placeholder="confirm password..." id="username3" required>
+            <input type="password" placeholder="confirm password..." id="username3" required>
             <br><br>
             <button type="submit" id="submit" onClick="if(checkCode()) {if(checkPass()){sendEmail()} else {return false}}else return false">Send Me Email</button>
             <br><br>

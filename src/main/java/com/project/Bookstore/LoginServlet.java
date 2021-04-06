@@ -26,17 +26,15 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        int userID = -1;
+        User user = null;
 
         try {
-            userID = userDao.getLoginInfo(email, password);
+            user = userDao.getLoginInfo(email, password);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        System.out.println("userID: " + userID);
-
-        if(userID > 0) {
+        if(user != null && user.getUserID() > 0) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
             dispatcher.forward(request, response);
         } else {

@@ -117,7 +117,7 @@
 
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                           maxlength="19" id = "username" value = "${cardNum}" placeholder="xxxx xxxx xxxx xxxx"/>
+                           maxlength="19" id = "username" <!--value = "${cardNum}"--> placeholder="xxxx xxxx xxxx xxxx"/>
 
                 <label><b>Card Expiration Date</b></label><br>
                 <select name="expMonth">
