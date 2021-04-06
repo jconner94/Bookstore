@@ -55,6 +55,12 @@
 <footer>Copyright &copy; 2021</footer>
 </body>
 </html>
+
+<script type = "text/javascript" >
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
 <!--<div>
 <h1>Bookstore Project</h1>
 <form action="/register" method="post">
