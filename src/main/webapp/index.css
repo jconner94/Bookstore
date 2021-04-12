@@ -87,7 +87,14 @@ footer {
     padding: 50px;
 }
 #editForm {
-    width: 50%;
+    width: 60%;
+    padding: 10px 20px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+#editEmail {
+    width: 60%;
     padding: 10px 20px;
     margin: 10px;
     box-sizing: border-box;

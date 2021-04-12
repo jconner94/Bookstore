@@ -45,7 +45,7 @@
                 <input type="text" name="lastName" id = "editForm" value="${lastName}"required>
         <br><br>
                 <label><b>Email</b></label><br>
-                <input type="text" name="email" id="email" value="${email}" readonly/>
+                <input type="text" name="email" id="editEmail" value="${email}" readonly/>
         <br><br>
                 <label><b>Password</b></label><br>
                 <input type="password" name="password" id = "editForm" placeholder="Password" required/>
@@ -114,11 +114,11 @@
                     <option value="WI" selected="@${state} == WI">Wisconsin</option>
                     <option value="WY" selected="@${state} == WY">Wyoming</option>
                 </select>
-
+                <br><br>
                 <label><b>Credit Card Number</b></label><br>
                 <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
                            maxlength="19" id ="editForm" value = "${cardNum}" placeholder="xxxx xxxx xxxx xxxx"/>
-
+                <br><br>
                 <label><b>Card Expiration Date</b></label><br>
                 <select name="expMonth">
                     <option value=""></option>
@@ -182,7 +182,7 @@
             Host: "smtp.gmail.com",
             Username: "bookstore3c@gmail.com",
             Password: "strongestpassword#1",
-            To: String(form1.email.value),
+            To: String(form1.editEmail.value),
             From: "bookstore3c@gmail.com",
             Subject: "Updated Profile",
             Body: "You have successfully updated your User Profile!",
