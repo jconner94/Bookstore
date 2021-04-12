@@ -31,13 +31,10 @@
         <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
     </ul>
 </nav>
-<div class= "login">
+<div class= "editLogin">
     <h1>Edit Profile</h1>
     <form action="<%= request.getContextPath() %>/edit-servlet" id="editAcct" method="post">
-
-        <label><b>User ID</b></label><br>
-        <input type="text" name="userID" value="${userID}" readonly/>
-<br><br>
+        <br><br>
                 <label><b>First Name</b></label><br>
                 <input type="text" name="firstName" id = "editForm" value="${firstName}" required/>
         <br><br>

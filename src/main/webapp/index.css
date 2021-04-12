@@ -86,6 +86,15 @@ footer {
     border: 3px solid #080808;
     padding: 50px;
 }
+
+.editLogin {
+    margin:auto;
+    top:25%;
+    left:25%;
+    width: 25%;
+    border: 3px solid #080808;
+    padding: 50px;
+}
 #editForm {
     width: 60%;
     padding: 10px 20px;
