@@ -150,8 +150,6 @@ public class UserDao {
                 String lastName = rs.getString("lastName");
                 boolean isSuspended = rs.getBoolean("isSuspended");
                 boolean isAdmin = rs.getBoolean("isAdmin");
-                System.out.println("isSuspended: " + isSuspended);
-                System.out.println("isAdmin: " + isAdmin);
                 user = new User(userID, firstName, lastName, email, isSuspended, isAdmin);
             }
 

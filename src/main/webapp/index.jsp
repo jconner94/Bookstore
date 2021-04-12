@@ -54,6 +54,7 @@
     <footer>Copyright &copy; 2021</footer>
 </body>
 </html>
+
     <!--<div>
         <h1>Bookstore Project</h1>
         <form action="/register" method="post">
