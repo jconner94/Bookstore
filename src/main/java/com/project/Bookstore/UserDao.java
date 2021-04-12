@@ -130,7 +130,7 @@ public class UserDao {
     } // editUserInfo
 
     public User getLoginInfo(String email, String password) throws ClassNotFoundException {
-        String LOGIN_INFO_SQL = "SELECT userID, firstName, lastName FROM `users` WHERE email = ? AND password = aes_encrypt(?, ?)";
+        String LOGIN_INFO_SQL = "SELECT userID, firstName, lastName , isSuspended, isAdmin FROM `users` WHERE email = ? AND password = aes_encrypt(?, ?)";
 
         User user = null;
 
@@ -148,7 +148,11 @@ public class UserDao {
                 int userID = rs.getInt("userID");
                 String firstName = rs.getString("firstName");
                 String lastName = rs.getString("lastName");
-                user = new User(userID, firstName, lastName, email);
+                boolean isSuspended = rs.getBoolean("isSuspended");
+                boolean isAdmin = rs.getBoolean("isAdmin");
+                System.out.println("isSuspended: " + isSuspended);
+                System.out.println("isAdmin: " + isAdmin);
+                user = new User(userID, firstName, lastName, email, isSuspended, isAdmin);
             }
 
         } catch(SQLException e) {
@@ -175,7 +179,29 @@ public class UserDao {
             result = passwordStatement.executeUpdate();
         } catch(SQLException e) {
             System.out.println("SQL Error in changePassword");
+            e.printStackTrace();
         } // try/catch
+
+        return result;
+    }
+
+    public int changeUserSuspension(int userID, boolean suspendStatus) throws ClassNotFoundException {
+        String UPDATE_STATUS_URL = "UPDATE users SET isSuspended = ?, WHERE userID = ?";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement suspendStatement = conn.prepareStatement(UPDATE_STATUS_URL);
+            suspendStatement.setBoolean(1, suspendStatus);
+            suspendStatement.setInt(2, userID);
+            result = suspendStatement.executeUpdate();
+        } catch(SQLException e) {
+            System.out.println("SQL Error in changeUserSuspension");
+            e.printStackTrace();
+        }
 
         return result;
     }

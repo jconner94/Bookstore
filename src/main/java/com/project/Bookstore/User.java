@@ -13,6 +13,8 @@ public class User {
     private String expMonth;
     private String expYear;
     private String cvv;
+    private boolean isSuspended;
+    private boolean isAdmin;
 
     public User() { }
 
@@ -23,9 +25,16 @@ public class User {
         this.email = email;
     }
 
-    public int getUserID() {
-        return userID;
-    } // getUserId
+    public User(int userID, String firstName, String lastName, String email, boolean isSuspended, boolean isAdmin) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.isSuspended = isSuspended;
+        this.isAdmin = isAdmin;
+    }
+
+    public int getUserID() { return userID; } // getUserId
 
     public void setUserID(int userID) {
         this.userID = userID;
@@ -118,5 +127,13 @@ public class User {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
+
+    public boolean getIsSuspended() { return isSuspended; }
+
+    public void setIsSuspended(boolean isSuspended) { this.isSuspended = isSuspended; }
+
+    public boolean getIsAdmin() { return isAdmin; }
+
+    public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
 
 }

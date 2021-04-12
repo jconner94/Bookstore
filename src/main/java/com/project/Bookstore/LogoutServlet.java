@@ -17,6 +17,7 @@ public class LogoutServlet extends HttpServlet {
     private UserDao userDao = new UserDao();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("In logoutServlet");
         response.getWriter().append("Served at: ").append(request.getContextPath());
         response.setContentType("text/html");
 

@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = null;
@@ -34,12 +36,18 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if(user != null && user.getUserID() > 0) {
+        if(user != null && user.getUserID() > 0 && !user.getIsSuspended()) {
+            session.setAttribute("uid", user.getUserID());
+            session.setAttribute("firstName", user.getFirstName());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
             dispatcher.forward(request, response);
-        } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+        } else if(user != null && user.getIsSuspended()) {
+            session.setAttribute("email", email);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/suspended.jsp");
             dispatcher.forward(request, response);
+        } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+                dispatcher.forward(request, response);
         }
 
     }
