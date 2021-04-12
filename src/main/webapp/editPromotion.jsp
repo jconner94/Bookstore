@@ -149,11 +149,11 @@
             <label><b>Description:</b></label>
             <input type="text" placeholder="Enter description to send to customers via email..." id="author" required>
             <br><br>
-            <button type="submit" id="submit">Add Book</button>
+            <button type="submit" id="submit" onClick = "sendPromo()">Add Book</button>
             <br><br>
         </form>
         <form action="AdminMain.html">
-            <button type="submit" id="cancel" onClick = "sendPromo()">Cancel</button>
+            <button type="submit" id="cancel">Cancel</button>
         </form>
     </div>
 </main>
