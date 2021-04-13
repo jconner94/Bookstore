@@ -127,7 +127,7 @@
 
 <body>
 <nav>
-    <h1 class="title">AddNewBook</h1>
+    <h1 class="title">EditPromotion</h1>
     <ul class="links">
         <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
         <li><a href="Contact.html" style="text-decoration: none; color: white">Contact</a></li>
