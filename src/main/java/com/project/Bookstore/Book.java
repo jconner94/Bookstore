@@ -1,10 +1,8 @@
 package com.project.Bookstore;
 
-import java.time.LocalDate;
-
 public class Book {
     private int isbn;
-    private int edition;
+    private String edition;
     private int minimumThreshold;
     private int currentStock;
     private double buyPrice;
@@ -14,7 +12,7 @@ public class Book {
     private String coverPic;
     private String publisher;
     private String title;
-    private LocalDate pubDate;
+    private int pubYear;
 
     public int getIsbn() {
         return isbn;
@@ -24,11 +22,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getEdition() {
+    public String getEdition() {
         return edition;
     }
 
-    public void setEdition(int edition) {
+    public void setEdition(String edition) {
         this.edition = edition;
     }
 
@@ -104,12 +102,12 @@ public class Book {
         this.title = title;
     }
 
-    public LocalDate getPubDate() {
-        return pubDate;
+    public int getPubYear() {
+        return pubYear;
     }
 
-    public void setPubDate(LocalDate pubDate) {
-        this.pubDate = pubDate;
+    public void setPubYear(int pubYear) {
+        this.pubYear = pubYear;
     }
 
 }
