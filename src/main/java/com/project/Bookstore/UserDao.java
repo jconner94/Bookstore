@@ -8,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
-    private final String jdbcUrl = "jdbc:mysql://localhost:3306/bookstore";
+    private final String jdbcUrl = "jdbc:mysql://:localhost:3306/bookstore";
     private final String dbUser = "root";
     private final String dbPass = "root";
-    private final String encrypt = "jcTZkjKW";
+    private final String encrypt = "root";
 
     public int registerUser(User user) throws ClassNotFoundException {
         String FETCH_ID_SQL = "SELECT MAX(userID) FROM users";
@@ -202,5 +202,23 @@ public class UserDao {
         }
 
         return result;
+    }
+
+    public void banUser(int userID, int status) throws ClassNotFoundException {
+        String BAN_USER_ACCOUNT = "UPDATE users SET isSuspended = ?, WHERE userID = ?";
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement banStatement = conn.prepareStatement(BAN_USER_ACCOUNT);
+            banStatement.setInt(1, status);
+            banStatement.setInt(2, userID);
+            banStatement.executeQuery();
+
+        } catch(SQLException e) {
+            System.out.println("SQL Error in getLoginInfo");
+            e.printStackTrace();
+        }
     }
 }
