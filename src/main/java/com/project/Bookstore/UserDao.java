@@ -8,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
-    private final String jdbcUrl = "jdbc:mysql://:localhost:3306/bookstore";
+    private final String jdbcUrl = "jdbc:mysql://localhost:3306/bookstore";
     private final String dbUser = "root";
     private final String dbPass = "root";
-    private final String encrypt = "root";
+    private final String encrypt = "jcTZkjKW";
 
     public int registerUser(User user) throws ClassNotFoundException {
         String FETCH_ID_SQL = "SELECT MAX(userID) FROM users";
