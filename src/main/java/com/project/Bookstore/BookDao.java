@@ -32,7 +32,7 @@ public class BookDao {
             insertBookStatement.setString(3, book.getAuthorName());
             insertBookStatement.setString(4, book.getTitle());
             insertBookStatement.setString(5, book.getCoverPic());
-            insertBookStatement.setInt(6, book.getEdition());
+            insertBookStatement.setString(6, book.getEdition());
             insertBookStatement.setString(7, book.getPublisher());
             insertBookStatement.setInt(9, book.getCurrentStock());
             insertBookStatement.setInt(10, book.getMinimumThreshold());

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1"%>
 
 
 <!DOCTYPE html>
@@ -129,48 +129,50 @@ pageEncoding="ISO-8859-1"%>
         <li><a href="Contact.html" style="text-decoration: none; color: white">Contact</a></li>
     </ul>
     <ul class="icons">
-        <li><img src="resources/search-icon.svg" alt="" class="top-icon"></li>
-        <li><a href="login.jsp"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="Shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="register-servlet">
+            <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <li><a href="search.html"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
     </ul>
 </nav>
 <main>
     <div class="newbook">
-        <form action="AddNewBook.html"> <!-- Might need to change? -->
+        <form action="<%= request.getContextPath() %>/addBookServlet" id="addBook" method="post">
             <h1>New Book</h1>
             <br>
             <label><b>ISBN:</b></label>
-            <input type="text" placeholder="Enter ISBN..." id="isbn" required maxlength="13">
+            <input type="text" name="isbn" placeholder="Enter ISBN..." id="isbn" required maxlength="13">
             <br><br>
             <label><b>Title:</b></label>
-            <input type="text" placeholder="Enter Title..." id="title" required>
+            <input type="text" name="title" placeholder="Enter Title..." id="title" required>
             <br><br>
             <label><b>Author(s):</b></label>
-            <input type="text" placeholder="Enter Author(s)..." id="author" required>
+            <input type="text" name="author" placeholder="Enter Author(s)..." id="author" required>
             <br><br>
             <label><b>Edition:</b></label>
-            <input type="text" placeholder="Enter Edition..." id="edition" required>
+            <input type="text" name="edition" placeholder="Enter Edition..." id="edition" required>
             <br><br>
             <label><b>Publisher:</b></label>
-            <input type="text" placeholder="Enter Publisher..." id="publisher" required>
+            <input type="text" name="publisher" placeholder="Enter Publisher..." id="publisher" required>
             <br><br>
             <label><b>Publication Year:</b></label>
-            <input type="text" placeholder="Enter Publication Year..." id="year" required>
+            <input type="text" name="pubYear" placeholder="Enter Publication Year..." id="year" required>
             <br><br>
             <label><b>Quantity In Stock:</b></label>
-            <input type="text" placeholder="Enter Quantity..." id="quantity" required>
+            <input type="text" name="quantity" placeholder="Enter Quantity..." id="quantity" required>
             <br><br>
             <label><b>Minimum Threshold:</b></label>
-            <input type="text" placeholder="Enter Minimum Threshold..." id="minthreshold" required>
+            <input type="text" name="minThreshold" placeholder="Enter Minimum Threshold..." id="minthreshold" required>
             <br><br>
             <label><b>Buying Price:</b></label>
-            <input type="text" placeholder="Enter Buying Price..." id="buyprice" required>
+            <input type="text" name="buyPrice" placeholder="Enter Buying Price..." id="buyprice" required>
             <br><br>
             <label><b>Selling Price:</b></label>
-            <input type="text" placeholder="Enter Selling Price..." id="sellprice" required>
+            <input type="text" name="sellPrice" placeholder="Enter Selling Price..." id="sellprice" required>
             <br><br>
             <label><b>Book Cover:</b></label>
-            <input type="file" id="bookcover" required>
+            <input type="file" name="bookCover" id="bookcover" required>
             <br><br>
             <button type="submit" id="submit">Add Book</button>
             <br><br>

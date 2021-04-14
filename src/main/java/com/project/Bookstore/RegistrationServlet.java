@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "registerServlet", value = "/register-servlet")
 public class RegistrationServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 
     private UserDao userDao = new UserDao();
 
