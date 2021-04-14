@@ -89,10 +89,10 @@ footer {
 
 .editLogin {
     margin:auto;
-    top:25%;
+    top:25f%;
     left:25%;
-    width: 50%;
-    border: 3px solid #080808;
+    width: 40%;
+    border: 8px solid #080808;
     padding: 50px;
 }
 
@@ -111,14 +111,14 @@ footer {
 }
 
 #username {
-    width: 100%;
+    width: 60%;
     padding: 10px 20px;
     margin: 10px;
     box-sizing: border-box;
 }
 
 #username2 {
-    width: 100%;
+    width: 60%;
     padding: 10px 20px;
     margin: 10px;
     box-sizing: border-box;
