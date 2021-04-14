@@ -46,6 +46,7 @@
         <br><br>
         <label><b>*Password</b></label><br>
         <label>(Must contain at least one uppercase letter, one lowercase letter, one number, and must be at least 8 characters long)</label>
+        <br><br>
         <input type="password" name="password" placeholder="Password..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="username" required/>
         <br><br>
         <label><b>*Confirm Password</b></label><br>
