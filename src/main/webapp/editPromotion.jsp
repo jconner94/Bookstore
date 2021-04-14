@@ -278,7 +278,7 @@
             </select><br>
             <br><br>
             <label><b>Description:</b></label>
-            <input type="text" placeholder="Enter description... id="editForm" required>
+            <input type="text" placeholder="Enter description..." id="editForm" required>
             <br><br>
             <button type="submit" id="submit" onClick = "sendPromo()">Add Promotion</button>
             <br><br>
