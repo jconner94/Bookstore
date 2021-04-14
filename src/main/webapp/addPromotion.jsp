@@ -140,8 +140,8 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form action="AddNewBook.html" id="promoForm"> <!-- Might need to change? -->
-            <h1>Edit Promotion</h1>
+        <form action="AddNewBook.html"> <!-- Might need to change? -->
+            <h1>New Promotion</h1>
             <br>
             <label><b>ID:</b></label>
             <input type="text" placeholder="Enter ID..." id="editForm" required>
@@ -151,7 +151,7 @@
             <br><br>
             <label><b>Start Date</b></label><br>
 
-            <select name="startDay" id="startD">
+            <select name="startDay">
                 <option value=""></option>
                 <option value="01">01</option>
                 <option value="02">02</option>
@@ -186,7 +186,7 @@
                 <option value="31">31</option>
             </select><br>
 
-            <select name="startMonth" id="startM">
+            <select name="startMonth">
                 <option value=""></option>
                 <option value="01">01-January</option>
                 <option value="02">02-February</option>
@@ -201,7 +201,7 @@
                 <option value="11">11-November</option>
                 <option value="12">12-December</option>
             </select><br>
-            <select name="startYear" id="startY">
+            <select name="startYear">
                 <option value=""></option>
                 <option value="21">2021</option>
                 <option value="22">2022</option>
@@ -217,7 +217,7 @@
             <br><br>
             <label><b>End Date</b></label><br>
 
-            <select name="endDay" id="endD">
+            <select name="endDay">
                 <option value=""></option>
                 <option value="01">01</option>
                 <option value="02">02</option>
@@ -251,7 +251,7 @@
                 <option value="30">30</option>
                 <option value="31">31</option>
             </select><br>
-            <select name="endMonth" id="endM">
+            <select name="endMonth">
                 <option value=""></option>
                 <option value="01">01-January</option>
                 <option value="02">02-February</option>
@@ -266,7 +266,7 @@
                 <option value="11">11-November</option>
                 <option value="12">12-December</option>
             </select><br>
-            <select name="endYear" id="endY">
+            <select name="endYear">
                 <option value=""></option>
                 <option value="21">2021</option>
                 <option value="22">2022</option>
@@ -283,17 +283,9 @@
             <label><b>Description:</b></label>
             <input type="text" placeholder="Enter description..." id="editForm" required>
             <br><br>
-            <button type="submit" id="submit" onClick="return checkDates()">Submit Changes</button>
+            <button type="submit" id="submit" onClick = "sendPromo()">Add Promotion</button>
             <br><br>
         </form>
-        <form action="AdminMain.html">
-            <h1>Notify Customers of Promotion</h1>
-            <label><b>ID:</b></label>
-            <input type="text" placeholder="Enter ID..." id="editForm" required>
-            <br><br>
-            <button type="submit" id="cancel">Send Email</button>
-        </form>
-        <br><br>
         <form action="AdminMain.html">
             <button type="submit" id="cancel">Cancel</button>
         </form>
@@ -301,29 +293,4 @@
 </main>
 <footer>Copyright &copy; 2021</footer>
 </body>
-<script type="text/javascript">
-    function checkDates() {
-        var form1 = document.getElementById('promoForm');
-        if(parseInt(form1.startY.value) > parseInt(form1.endY.value)){ //checks the years being valid
-            alert("End date must be after start date.");
-            return false;
-        } else if(parseInt(form1.startY.value) < parseInt(form1.endY.value)){
-            alert("1.");
-            return true;
-        } else if(parseInt((form1.startM.value).substring(0,3)) > parseInt((form1.endM.value).subtring(0,3))){ //checks months being valid
-            alert("End date must be after start date.");
-            return false;
-        } else if(parseInt((form1.startM.value).substring(0,3)) < parseInt((form1.endM.value).subtring(0,3))){
-            alert("2.");
-            return true;
-        } else if(parseInt(form1.startD.value) > parseInt(form1.endD.value)){ // checks day being valid
-            alert("End date must be after start date.");
-            return false;
-        } else {
-            alert("3.");
-            return true;
-        }
-        alert("4.");
-    }
-</script>
 </html>
