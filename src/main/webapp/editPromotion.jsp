@@ -139,12 +139,12 @@
     </ul>
 </nav>
 <main>
-    <div class="newbook" id="addPromo">
+    <div class="editLogin" id="addPromo">
         <form action="AddNewBook.html"> <!-- Might need to change? -->
             <h1>New Promotion</h1>
             <br>
             <label><b>Title:</b></label>
-            <input type="text" placeholder="Enter Title..." id="title" required>
+            <input type="text" placeholder="Enter Title..." id="editForm" required>
             <br><br>
             <label><b>Start Date</b></label><br>
 
@@ -213,7 +213,6 @@
             </select><br>
             <br><br>
             <label><b>End Date</b></label><br>
-            <label><b>Start Date</b></label><br>
 
             <select name="endDay">
                 <option value=""></option>
@@ -279,7 +278,7 @@
             </select><br>
             <br><br>
             <label><b>Description:</b></label>
-            <input type="text" placeholder="Enter description to send to customers via email..." id="author" required>
+            <input type="text" placeholder="Enter description... id="editForm" required>
             <br><br>
             <button type="submit" id="submit" onClick = "sendPromo()">Add Promotion</button>
             <br><br>
