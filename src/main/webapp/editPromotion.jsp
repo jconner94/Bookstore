@@ -143,6 +143,9 @@
         <form action="AddNewBook.html"> <!-- Might need to change? -->
             <h1>New Promotion</h1>
             <br>
+            <label><b>ID:</b></label>
+            <input type="text" placeholder="Enter ID..." id="editForm" required>
+            <br><br>
             <label><b>Title:</b></label>
             <input type="text" placeholder="Enter Title..." id="editForm" required>
             <br><br>
