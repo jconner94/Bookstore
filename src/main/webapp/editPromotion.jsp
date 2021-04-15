@@ -140,7 +140,7 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form action="AddNewBook.html" id="promoForm"> <!-- Might need to change? -->
+        <form action="editPromotion.jsp" id="promoForm"> <!-- Might need to change? -->
             <h1>Edit Promotion</h1>
             <br>
             <label><b>ID:</b></label>
@@ -283,18 +283,9 @@
             <label><b>Description:</b></label>
             <input type="text" placeholder="Enter description..." id="editForm" required>
             <br><br>
-            <button type="submit" id="submit" onClick="return checkDates()">Submit Changes</button>
+            <button type="submit" id="submit" onClick="if(return checkDates()){sendPromo()}else return false">Submit Changes</button>
+
             <br><br>
-        </form>
-        <form action="AdminMain.html" id="emailPromo">
-            <h1>Notify Customers of Promotion</h1>
-            <label><b>ID:</b></label>
-            <input type="text" placeholder="Enter ID..." id="editForm" required>
-            <br><br>
-            <label><b>Description:</b></label>
-            <input type="text" placeholder="Enter descpition to send out to customers..." id="desc" required>
-            <br><br>
-            <button type="submit" id="cancel" onClick = "sendPromo()">Send Email</button>
         </form>
         <br><br>
         <form action="AdminMain.html">
@@ -356,7 +347,7 @@
             Subject: "New Promotion!",
             Body: String(form1.desc.value),
         })
-        alert("Email sent out to customers!")
+        alert("Form added!. Email has been sent out to customers!")
     }
 </script>
 </html>
