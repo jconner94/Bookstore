@@ -286,12 +286,15 @@
             <button type="submit" id="submit" onClick="return checkDates()">Submit Changes</button>
             <br><br>
         </form>
-        <form action="AdminMain.html">
+        <form action="AdminMain.html" id="emailPromo">
             <h1>Notify Customers of Promotion</h1>
             <label><b>ID:</b></label>
             <input type="text" placeholder="Enter ID..." id="editForm" required>
             <br><br>
-            <button type="submit" id="cancel">Send Email</button>
+            <label><b>Description:</b></label>
+            <input type="text" placeholder="Enter descpition to send out to customers..." id="desc" required>
+            <br><br>
+            <button type="submit" id="cancel" onClick = "sendPromo()">Send Email</button>
         </form>
         <br><br>
         <form action="AdminMain.html">
@@ -329,6 +332,31 @@
 
         return true;
 
+    }
+</script>
+
+<script type="text/javascript">
+    function sendPromo() {
+        var form1 = document.getElementById('emailPromo');
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: "jamesrcon94@gmail.com",
+            From: "bookstore3c@gmail.com",
+            Subject: "New Promotion!",
+            Body: String(form1.desc.value),
+        })
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: "zillertrevor@gmail.com",
+            From: "bookstore3c@gmail.com",
+            Subject: "New Promotion!",
+            Body: String(form1.desc.value),
+        })
+        alert("Email sent out to customers!")
     }
 </script>
 </html>
