@@ -17,7 +17,7 @@ public class BookDao {
                 " (isbn, category, authorName, title, coverPic," +
                 " edition, publisher, publicationYear, quantityInStock," +
                 " minimumThresh, buyPrice, sellPrice)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
 

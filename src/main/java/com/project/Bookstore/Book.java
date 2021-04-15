@@ -56,7 +56,7 @@ public class Book {
     }
 
     public double getSellPrice() {
-        return isbn;
+        return sellPrice;
     }
 
     public void setSellPrice(double sellPrice) {
