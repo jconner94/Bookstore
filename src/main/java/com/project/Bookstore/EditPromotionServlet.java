@@ -34,20 +34,17 @@ public class EditPromotionServlet extends HttpServlet {
         }
 
         if(promo == null) {
-            System.out.println("Promo not found");
             request.setAttribute("isSent", "nf");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminMain.jsp");
             dispatcher.forward(request, response);
         } else if(promo.getIsSent()) {
-            System.out.println("as");
             request.setAttribute("isSent", "Promotion Already Sent!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminMain.jsp");
             dispatcher.forward(request, response);
         } else {
-            System.out.println("Promo found and not sent");
             request.setAttribute("promoID", promo.getPromoCode());
             request.setAttribute("title", promo.getTitle());
-            request.setAttribute("percentage", (promo.getPercentage()) * 100);
+            request.setAttribute("percentage", (int)(promo.getPercentage() * 100));
             request.setAttribute("startDay", promo.getStartDay());
             request.setAttribute("startMonth", promo.getStartMonth());
             request.setAttribute("startYear", promo.getStartYear());
@@ -79,11 +76,6 @@ public class EditPromotionServlet extends HttpServlet {
                 startYear, startMonth, startDay,
                 endYear, endMonth, endDay,
                 percentage);
-
-        //Promotion promo = new Promotion(promoCode, title, description,
-        //        startYear, startMonth, startDay,
-        //        endYear, endMonth, endDay,
-        //        percentage);
 
         try {
             promoDao.editPromotion(promo);

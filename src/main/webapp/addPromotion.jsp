@@ -140,7 +140,7 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form method="post" action="<%= request.getContextPath() %>/add-promotion-servlet"> <!-- Might need to change? -->
+        <form method="post" action="<%= request.getContextPath() %>/add-promotion-servlet" id="promoForm"> <!-- Might need to change? -->
             <h1>New Promotion</h1>
             <br>
             <label><b>ID:</b></label>
@@ -286,7 +286,7 @@
             <label><b>Description:</b></label>
             <input type="text" name = "description" placeholder="Enter description..." id="editForm" required>
             <br><br>
-            <button type="submit" id="submit" onClick = "checkDates()">Add Promotion</button>
+            <button type="submit" id="submit" onClick = "return checkDates()">Add Promotion</button>
             <br><br>
         </form>
         <form action="AdminMain.jsp">

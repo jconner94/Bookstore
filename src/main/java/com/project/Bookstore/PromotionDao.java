@@ -50,7 +50,6 @@ public class PromotionDao {
             Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
             PreparedStatement getPromoStatement = conn.prepareStatement(GET_PROMO_SQL);
             getPromoStatement.setString(1, promoCode);
-            System.out.println(getPromoStatement);
             ResultSet rs = getPromoStatement.executeQuery();
             if(rs.next()) {
                 String promoID = rs.getString("promoCode");

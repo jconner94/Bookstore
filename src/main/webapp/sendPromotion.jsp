@@ -140,7 +140,7 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <script> window.onload = sendPromo </script>
+        <script> window.onload = sendPromo; </script>
         <label><b>Promotion Sent!</b></label>
         <form action="AdminMain.jsp">
             <button type="submit" id="cancel">Return</button>

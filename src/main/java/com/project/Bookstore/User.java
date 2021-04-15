@@ -15,6 +15,7 @@ public class User {
     private String cvv;
     private boolean isSuspended;
     private boolean isAdmin;
+    private boolean promoOptIn;
 
     public User() { }
 
@@ -136,6 +137,10 @@ public class User {
     public boolean getIsAdmin() { return isAdmin; }
 
     public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
+
+    public boolean getPromoOptIn() { return promoOptIn; }
+
+    public void setPromoOptIn(boolean promoOptIn) { this.promoOptIn = promoOptIn; }
 
     public String toString() {
         String result = ("UID: " + userID + "\n");

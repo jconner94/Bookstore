@@ -286,7 +286,7 @@
             <label><b>Description:</b></label>
             <input type="text" name="description" placeholder="Enter description..." id="editForm" value="${description}" required>
             <br><br>
-            <button type="submit" id="submit" onClick="if(return checkDates()){sendPromo()}else return false">Submit Changes</button>
+            <button type="submit" id="submit" onClick="return checkDates()">Submit Changes</button>
 
             <br><br>
         </form>
@@ -302,12 +302,12 @@
     function checkDates() {
         var form1 = document.getElementById('promoForm');
 
-        var startYear = parseInt(form1.startY.value);
-        var endYear = parseInt(form1.endY.value);
-        var startMonth = parseInt(form1.startM.value);
-        var endMonth = parseInt(form1.endM.value);
-        var startDay = parseInt(form1.startD.value);
-        var endDay = parseInt(form1.endD.value);
+        var startYear = parseInt(form1.startYear.value);
+        var endYear = parseInt(form1.endYear.value);
+        var startMonth = parseInt(form1.startMonth.value);
+        var endMonth = parseInt(form1.endMonth.value);
+        var startDay = parseInt(form1.startDay.value);
+        var endDay = parseInt(form1.endDay.value);
 
         if(startYear > endYear) { // if start year is after end year
             alert("End date must be after start date.");
