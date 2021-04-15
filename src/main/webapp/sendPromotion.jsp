@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
-
-
+<%--
+  Created by IntelliJ IDEA.
+  User: kdog6
+  Date: 4/12/2021
+  Time: 3:33 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +127,7 @@ pageEncoding="ISO-8859-1"%>
 
 <body>
 <nav>
-    <h1 class="title">AddNewBook</h1>
+    <h1 class="title">EditPromotion</h1>
     <ul class="links">
         <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
         <li><a href="Contact.html" style="text-decoration: none; color: white">Contact</a></li>
@@ -135,51 +139,43 @@ pageEncoding="ISO-8859-1"%>
     </ul>
 </nav>
 <main>
-    <div class="newbook">
-        <form action="AddNewBook.html"> <!-- Might need to change? -->
-            <h1>New Book</h1>
-            <br>
-            <label><b>ISBN:</b></label>
-            <input type="text" placeholder="Enter ISBN..." id="isbn" required maxlength="13">
-            <br><br>
-            <label><b>Title:</b></label>
-            <input type="text" placeholder="Enter Title..." id="title" required>
-            <br><br>
-            <label><b>Author(s):</b></label>
-            <input type="text" placeholder="Enter Author(s)..." id="author" required>
-            <br><br>
-            <label><b>Edition:</b></label>
-            <input type="text" placeholder="Enter Edition..." id="edition" required>
-            <br><br>
-            <label><b>Publisher:</b></label>
-            <input type="text" placeholder="Enter Publisher..." id="publisher" required>
-            <br><br>
-            <label><b>Publication Year:</b></label>
-            <input type="text" placeholder="Enter Publication Year..." id="year" required>
-            <br><br>
-            <label><b>Quantity In Stock:</b></label>
-            <input type="text" placeholder="Enter Quantity..." id="quantity" required>
-            <br><br>
-            <label><b>Minimum Threshold:</b></label>
-            <input type="text" placeholder="Enter Minimum Threshold..." id="minthreshold" required>
-            <br><br>
-            <label><b>Buying Price:</b></label>
-            <input type="text" placeholder="Enter Buying Price..." id="buyprice" required>
-            <br><br>
-            <label><b>Selling Price:</b></label>
-            <input type="text" placeholder="Enter Selling Price..." id="sellprice" required>
-            <br><br>
-            <label><b>Book Cover:</b></label>
-            <input type="file" id="bookcover" required>
-            <br><br>
-            <button type="submit" id="submit">Add Book</button>
-            <br><br>
-        </form>
-        <form action="ManageBooks.jsp">
-            <button type="submit" id="cancel">Cancel</button>
+    <div class="editLogin" id="addPromo">
+        <script> window.onload = sendPromo </script>
+        <label><b>Promotion Sent!</b></label>
+        <form action="AdminMain.jsp">
+            <button type="submit" id="cancel">Return</button>
         </form>
     </div>
 </main>
 <footer>Copyright &copy; 2021</footer>
 </body>
+
+<script type="text/javascript">
+    function sendPromo() {
+        console.log("sendPromo")
+        //var title = ${title};
+        //var percentage = ${percentage};
+        //var description = ${description};
+
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: "jamesrcon94@gmail.com",
+            From: "bookstore3c@gmail.com",
+            Subject: "New Promotion!",
+            Body: "HI",
+        })
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: "zillertrevor@gmail.com",
+            From: "bookstore3c@gmail.com",
+            Subject: "New Promotion!",
+            Body: "HI",
+        })
+        alert("Form added!. Email has been sent out to customers!")
+    }
+</script>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 
 <!DOCTYPE html>
@@ -177,7 +176,7 @@
             <button type="submit" id="submit">Add Book</button>
             <br><br>
         </form>
-        <form action="ManageBooks.html">
+        <form action="ManageBooks.jsp">
             <button type="submit" id="cancel">Cancel</button>
         </form>
     </div>

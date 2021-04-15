@@ -31,7 +31,7 @@
     </ul>
 </nav>
 <div class = "login">
-    <h1>Customer Login</h1>
+    <h1>Login</h1>
     <form action="<%= request.getContextPath() %>/login-servlet" id="login" method="post">
         <label><b>Email</b></label><br>
         <input type="text" name="email" placeholder="Email..." id="username2" required/>

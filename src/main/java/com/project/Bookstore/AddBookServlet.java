@@ -71,7 +71,7 @@ public class AddBookServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/ManageBooks.html");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/ManageBooks.jsp");
         dispatcher.forward(request, response);
     }
 }

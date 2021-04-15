@@ -140,17 +140,20 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form action="editPromotion.jsp" id="promoForm"> <!-- Might need to change? -->
+        <form method="post" action="<%= request.getContextPath() %>/edit-promotion-servlet" id="promoForm"> <!-- Might need to change? -->
             <h1>Edit Promotion</h1>
             <br>
             <label><b>ID:</b></label>
-            <input type="text" placeholder="Enter ID..." id="editForm" required>
+            <input type="text" name="promoID" placeholder="Enter ID..." id="editForm" value="${promoID}" required>
             <br><br>
             <label><b>Title:</b></label>
-            <input type="text" placeholder="Enter Title..." id="editForm" required>
+            <input type="text" name="title" placeholder="Enter Title..." id="editForm" value="${title}" required>
             <br><br>
-            <label><b>Start Date</b></label><br>
+            <label><b>Discount %:</b></label>
+            <input type="text" name="percentage" placeholder="Enter % Discount..." id="editForm" value="${percentage}" required>
+            <br><br>
 
+            <label><b>Start Date</b></label><br>
             <select name="startDay" id="startD">
                 <option value=""></option>
                 <option value="01">01</option>
@@ -281,14 +284,14 @@
             </select><br>
             <br><br>
             <label><b>Description:</b></label>
-            <input type="text" placeholder="Enter description..." id="editForm" required>
+            <input type="text" name="description" placeholder="Enter description..." id="editForm" value="${description}" required>
             <br><br>
             <button type="submit" id="submit" onClick="if(return checkDates()){sendPromo()}else return false">Submit Changes</button>
 
             <br><br>
         </form>
         <br><br>
-        <form action="AdminMain.html">
+        <form action="AdminMain.jsp">
             <button type="submit" id="cancel">Cancel</button>
         </form>
     </div>

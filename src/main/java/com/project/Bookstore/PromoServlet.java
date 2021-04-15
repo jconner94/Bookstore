@@ -25,7 +25,7 @@ public class PromoServlet extends HttpServlet {
         User user = new User();
         user.setUserID(1);
 
-        try {// don't think we have promo SQL stuff yet?
+        try {
             String[] userInfo = userDao.fetchUserInfo(user);
             request.setAttribute("userID",  userInfo[0]);
             request.setAttribute("firstName",  userInfo[1]);

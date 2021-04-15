@@ -23,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if(session != null) {
+            System.out.println("Invalidating session...");
             session.invalidate();
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");

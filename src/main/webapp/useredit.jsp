@@ -115,7 +115,7 @@
         <br><br>
         <label><b>Credit Card Number</b></label><br>
         <input type="tel" name="cardNum" inputmode="numeric" pattern="[0-9\s]{13,19}"
-               maxlength="19" id ="editForm" value = "${cardNum}" placeholder="xxxx xxxx xxxx xxxx"/>
+               maxlength="19" id ="editForm" placeholder="xxxx xxxx xxxx xxxx"/>
         <br><br>
         <label><b>Card Expiration Date</b></label><br>
         <select name="expMonth">
@@ -149,7 +149,7 @@
         <br><br>
         <label><b>Security Code</b></label><br>
         <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
-               maxlength="3" value = "${cvv }" placeholder="xxx"/>
+               maxlength="3" placeholder="xxx"/>
         <br><br>
         <button type="submit" id="submit" onClick = "if(checkPass()) { sendEmail()} else {return false}" value="Submit">
             Submit Changes</button>

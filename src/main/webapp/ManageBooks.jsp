@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,6 @@
             padding: 2rem 10rem;
         }
 
-        .welcome-message {
-            text-align: left;
-        }
         .section-title {
             text-align: center;
             margin-top: 8rem;
@@ -43,7 +41,7 @@
 
 <body>
 <nav>
-    <h1 class="title">Admin Home</h1>
+    <h1 class="title">ManageBooks</h1>
     <ul class="links">
         <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
@@ -51,18 +49,18 @@
     <ul class="icons">
         <li><a href="search.html"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
         <li><a href="login.jsp"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="Shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
 <main>
-    <h2 class="welcome-message" id="demo">Welcome <% request.getSession().getAttribute("firstName") %>!</h2>
-    <h3 class="section-title" id="demo">OPTIONS</h3>
+    <h2 class="welcome-message" id="demo">Welcome ${firstName}!</h2>
+    <h3 class="section-title" id="demo">MANAGE BOOKS</h3>
     <div class="admin-options">
         <div class="option">
             <img src="resources/cart-icon.svg" class="images" width="100%" height="100%">
             <div class="middle">
-                <form method="post" action="ManageBooks.jsp">
-                    <button type="submit" class="shopButton" name="shopButton">Manage Books</button>
+                <form method="post" action="addNewBook.jsp">
+                    <button type="submit" class="shopButton" name="shopButton">Add New Book</button>
                 </form>
             </div>
         </div>
@@ -71,7 +69,7 @@
             <img src="resources/profile-icon.svg" class="images" width="100%" height="100%">
             <div class="middle">
                 <form method="post" action="index.html"> <!-- Needs changing -->
-                    <button type="submit" class="shopButton" name="shopButton">Manage Users</button>
+                    <button type="submit" class="shopButton" name="shopButton">Edit Book Info</button>
                 </form>
             </div>
         </div>
@@ -79,11 +77,8 @@
         <div class="option">
             <img src="resources/search-icon.svg" class="images" width="100%" height="100%">
             <div class="middle">
-                <form method="get" action="add-promotion-servlet"> <!-- Needs changing -->
-                    <button type="submit" class="shopButton" name="shopButton">Add Promotion</button>
-                </form>
-                <form method="post" action="editPromotion.jsp"> <!-- Needs changing -->
-                    <button type="submit" class="shopButton" name="shopButton">Manage Promotions</button>
+                <form method="post" action="index.html"> <!-- Needs changing -->
+                    <button type="submit" class="shopButton" name="shopButton">Delete Book</button>
                 </form>
             </div>
         </div>
@@ -93,9 +88,3 @@
 <footer>Copyright &copy; 2021</footer>
 </body>
 </html>
-
-<script type = "text/javascript" >
-    function preventBack() { window.history.forward(); }
-    setTimeout("preventBack()", 0);
-    window.onunload = function () { null };
-</script>-->

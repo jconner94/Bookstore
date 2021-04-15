@@ -28,7 +28,7 @@ public class BanServlet extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("ban"));
 
         try {
-            userDao.banUser(uid, status);
+            userDao.banUser(status, uid);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }

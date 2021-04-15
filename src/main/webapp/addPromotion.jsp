@@ -289,7 +289,7 @@
             <button type="submit" id="submit" onClick = "checkDates()">Add Promotion</button>
             <br><br>
         </form>
-        <form action="AdminMain.html">
+        <form action="AdminMain.jsp">
             <button type="submit" id="cancel">Cancel</button>
         </form>
     </div>

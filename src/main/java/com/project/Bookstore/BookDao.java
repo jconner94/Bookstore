@@ -17,7 +17,7 @@ public class BookDao {
                 " (isbn, category, authorName, title, coverPic," +
                 " edition, publisher, publicationYear, quantityInStock," +
                 " minimumThresh, buyPrice, sellPrice)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
 
@@ -34,6 +34,7 @@ public class BookDao {
             insertBookStatement.setString(5, book.getCoverPic());
             insertBookStatement.setString(6, book.getEdition());
             insertBookStatement.setString(7, book.getPublisher());
+            insertBookStatement.setInt(8,book.getPubYear());
             insertBookStatement.setInt(9, book.getCurrentStock());
             insertBookStatement.setInt(10, book.getMinimumThreshold());
             insertBookStatement.setDouble(11, book.getBuyPrice());

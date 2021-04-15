@@ -18,11 +18,12 @@ public class User {
 
     public User() { }
 
-    public User(int userID, String firstName, String lastName, String email) {
+    public User(int userID, String firstName, String lastName, String email, boolean isSuspended) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.isSuspended = isSuspended;
     }
 
     public User(int userID, String firstName, String lastName, String email, boolean isSuspended, boolean isAdmin) {
@@ -135,5 +136,15 @@ public class User {
     public boolean getIsAdmin() { return isAdmin; }
 
     public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
+
+    public String toString() {
+        String result = ("UID: " + userID + "\n");
+        result += ("firstName: " + firstName + "\n");
+        result += ("lastName: " + lastName + "\n");
+        result += ("email: " + email + "\n");
+        result += ("isSuspended: " +isSuspended + "\n");
+
+        return result;
+    }
 
 }
