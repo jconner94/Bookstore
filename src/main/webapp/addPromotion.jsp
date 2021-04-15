@@ -140,14 +140,14 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form action="<%= request.getContextPath() %>/add-promotion-servlet"> <!-- Might need to change? -->
+        <form method="post" action="<%= request.getContextPath() %>/add-promotion-servlet"> <!-- Might need to change? -->
             <h1>New Promotion</h1>
             <br>
             <label><b>ID:</b></label>
             <input type="text" name="promoID" placeholder="Enter ID..." id="editForm" required>
             <br><br>
             <label><b>Title:</b></label>
-            <input type="text" name="promoTitle" placeholder="Enter Title..." id="editForm" required>
+            <input type="text" name="title" placeholder="Enter Title..." id="editForm" required>
             <br><br>
             <label><b>Discount %:</b></label>
             <input type="text" name="percentage" placeholder="Enter % Discount..." id="editForm" required>

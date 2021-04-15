@@ -15,8 +15,8 @@ public class PromotionDao {
     public int addPromo(Promotion promo) throws ClassNotFoundException {
         String INSERT_PROMO_SQL = "INSERT INTO promotion" +
                 " (promoCode, startDate, percentage, expireDate," +
-                " title, description)" +
-                " VALUES (?, ?, ?, ?, ?, ?);";
+                " title, description, isSent)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
 
@@ -32,6 +32,7 @@ public class PromotionDao {
             insertPromoStatement.setString(4, promo.getFormattedEndDate());
             insertPromoStatement.setString(5, promo.getTitle());
             insertPromoStatement.setString(6, promo.getDescription());
+            insertPromoStatement.setBoolean(7, promo.getIsSent());
 
             result = insertPromoStatement.executeUpdate();
         } catch (SQLException e) {

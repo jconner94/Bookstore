@@ -56,27 +56,9 @@
 </body>
 </html>
 
-<!--
+
 <script type = "text/javascript" >
     function preventBack() { window.history.forward(); }
     setTimeout("preventBack()", 0);
     window.onunload = function () { null };
-</script>-->
-<!--<div>
-<h1>Bookstore Project</h1>
-<form action="/register" method="post">
-<p>
-First Name: <input type="text" name="firstName" placeholder="First Name..." required />
-</p>
-<p>
-Last Name: <input type="text" name="lastName" placeholder="Last Name..." required />
-</p>
-<p>
-<button type="submit" name="info" value="Submit">Click Here</button>
-</p>
-</form>
-</div>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>-->
+</script>

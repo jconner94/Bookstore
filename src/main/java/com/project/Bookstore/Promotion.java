@@ -11,6 +11,7 @@ public class Promotion {
     private String endMonth;
     private String endDay;
     private double percentage;
+    private boolean isSent;
 
 
     public Promotion(String promoCode, String title, String description,
@@ -27,6 +28,7 @@ public class Promotion {
         setEndMonth(endMonth);
         setEndDay(endDay);
         setPercentage(percentage);
+        isSent = false;
     }
 
 
@@ -68,10 +70,15 @@ public class Promotion {
 
     public double getPercentage() { return percentage; }
 
+    public void setPercentage(double percentage) { this.percentage = percentage; }
+
     public String getFormattedStartDate() { return (startYear + "-" + startMonth + "-" + startDay); }
 
     public String getFormattedEndDate() { return (endYear + "-" + endMonth + "-" + endDay); }
 
-    public void setPercentage(double percentage) { this.percentage = percentage; }
+    public boolean getIsSent() { return isSent; }
+
+    public void setIsSent(boolean isSent) { this.isSent = isSent; }
+
 
 }
