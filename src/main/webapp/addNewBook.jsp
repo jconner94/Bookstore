@@ -138,7 +138,7 @@
 </nav>
 <main>
     <div class="newbook">
-        <form action="<%= request.getContextPath() %>/addBookServlet" id="addBook" method="post">
+        <form action="<%= request.getContextPath() %>/add-book-servlet" id="addBook" method="post">
             <h1>New Book</h1>
             <br>
             <label><b>ISBN:</b></label>

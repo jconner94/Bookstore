@@ -29,7 +29,7 @@ public class AddBookServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer isbn = new Integer(0);
-        isbn = isbn.parseInt(request.getParameter("isbn"));
+        isbn = Integer.parseInt(request.getParameter("isbn"));
 
         String title = request.getParameter("title");
         String author = request.getParameter("author");
@@ -37,19 +37,19 @@ public class AddBookServlet extends HttpServlet {
         String publisher = request.getParameter("publisher");
 
         Integer pubYear = new Integer(0);
-        pubYear = pubYear.parseInt(request.getParameter("pubYear"));
+        pubYear = Integer.parseInt(request.getParameter("pubYear"));
 
         Integer quantity = new Integer(1);
-        quantity = quantity.parseInt(request.getParameter("quantity"));
+        quantity = Integer.parseInt(request.getParameter("quantity"));
 
         Integer minThreshold = new Integer(1);
-        minThreshold = minThreshold.parseInt(request.getParameter("minThreshold"));
+        minThreshold = Integer.parseInt(request.getParameter("minThreshold"));
 
         Double buyPrice = new Double(0);
-        buyPrice = buyPrice.parseDouble(request.getParameter("buyPrice"));
+        buyPrice = Double.parseDouble(request.getParameter("buyPrice"));
 
         Double sellPrice = new Double(0);
-        sellPrice = sellPrice.parseDouble(request.getParameter("sellPrice"));
+        sellPrice = Double.parseDouble(request.getParameter("sellPrice"));
 
         /*  File bookCover = request.getParameter("bookCover"); */
 

@@ -203,16 +203,16 @@
             </select><br>
             <select name="startYear" id="startY">
                 <option value=""></option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-                <option value="24">2024</option>
-                <option value="25">2025</option>
-                <option value="26">2026</option>
-                <option value="27">2027</option>
-                <option value="28">2028</option>
-                <option value="29">2029</option>
-                <option value="30">2030</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
             </select><br>
             <br><br>
             <label><b>End Date</b></label><br>
@@ -268,16 +268,16 @@
             </select><br>
             <select name="endYear" id="endY">
                 <option value=""></option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-                <option value="24">2024</option>
-                <option value="25">2025</option>
-                <option value="26">2026</option>
-                <option value="27">2027</option>
-                <option value="28">2028</option>
-                <option value="29">2029</option>
-                <option value="30">2030</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
             </select><br>
             <br><br>
             <label><b>Description:</b></label>
@@ -304,26 +304,31 @@
 <script type="text/javascript">
     function checkDates() {
         var form1 = document.getElementById('promoForm');
-        if(parseInt(form1.startY.value) > parseInt(form1.endY.value)){ //checks the years being valid
+
+        var startYear = parseInt(form1.startY.value);
+        var endYear = parseInt(form1.endY.value);
+        var startMonth = parseInt(form1.startM.value);
+        var endMonth = parseInt(form1.endM.value);
+        var startDay = parseInt(form1.startD.value);
+        var endDay = parseInt(form1.endD.value);
+
+        if(startYear > endYear) { // if start year is after end year
             alert("End date must be after start date.");
             return false;
-        } else if(parseInt(form1.startY.value) < parseInt(form1.endY.value)){
-            alert("1.");
-            return true;
-        } else if(parseInt((form1.startM.value).substring(0,3)) > parseInt((form1.endM.value).subtring(0,3))){ //checks months being valid
-            alert("End date must be after start date.");
-            return false;
-        } else if(parseInt((form1.startM.value).substring(0,3)) < parseInt((form1.endM.value).subtring(0,3))){
-            alert("2.");
-            return true;
-        } else if(parseInt(form1.startD.value) > parseInt(form1.endD.value)){ // checks day being valid
-            alert("End date must be after start date.");
-            return false;
-        } else {
-            alert("3.");
-            return true;
+        } else if(startYear == endYear) { // if start year == end year
+            if(startMonth > endMonth) { // if start month is after end month
+                alert("End date must be after start date.");
+                return false;
+            } else if(startMonth == endMonth) {
+                if(startDay > endDay) {
+                    alert("End date must be after start date.");
+                    return false;
+                }
+            }
         }
-        alert("4.");
+
+        return true;
+
     }
 </script>
 </html>

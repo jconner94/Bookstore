@@ -140,14 +140,17 @@
 </nav>
 <main>
     <div class="editLogin" id="addPromo">
-        <form action="AddNewBook.html"> <!-- Might need to change? -->
+        <form action="<%= request.getContextPath() %>/add-promotion-servlet"> <!-- Might need to change? -->
             <h1>New Promotion</h1>
             <br>
             <label><b>ID:</b></label>
-            <input type="text" placeholder="Enter ID..." id="editForm" required>
+            <input type="text" name="promoID" placeholder="Enter ID..." id="editForm" required>
             <br><br>
             <label><b>Title:</b></label>
-            <input type="text" placeholder="Enter Title..." id="editForm" required>
+            <input type="text" name="promoTitle" placeholder="Enter Title..." id="editForm" required>
+            <br><br>
+            <label><b>Discount %:</b></label>
+            <input type="text" name="percentage" placeholder="Enter % Discount..." id="editForm" required>
             <br><br>
             <label><b>Start Date</b></label><br>
 
@@ -203,16 +206,16 @@
             </select><br>
             <select name="startYear">
                 <option value=""></option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-                <option value="24">2024</option>
-                <option value="25">2025</option>
-                <option value="26">2026</option>
-                <option value="27">2027</option>
-                <option value="28">2028</option>
-                <option value="29">2029</option>
-                <option value="30">2030</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
             </select><br>
             <br><br>
             <label><b>End Date</b></label><br>
@@ -268,22 +271,22 @@
             </select><br>
             <select name="endYear">
                 <option value=""></option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-                <option value="24">2024</option>
-                <option value="25">2025</option>
-                <option value="26">2026</option>
-                <option value="27">2027</option>
-                <option value="28">2028</option>
-                <option value="29">2029</option>
-                <option value="30">2030</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
             </select><br>
             <br><br>
             <label><b>Description:</b></label>
-            <input type="text" placeholder="Enter description..." id="editForm" required>
+            <input type="text" name = "description" placeholder="Enter description..." id="editForm" required>
             <br><br>
-            <button type="submit" id="submit" onClick = "sendPromo()">Add Promotion</button>
+            <button type="submit" id="submit" onClick = "checkDates()">Add Promotion</button>
             <br><br>
         </form>
         <form action="AdminMain.html">
@@ -293,4 +296,36 @@
 </main>
 <footer>Copyright &copy; 2021</footer>
 </body>
+
+<script type="text/javascript">
+    function checkDates() {
+        var form1 = document.getElementById('promoForm');
+
+        var startYear = parseInt(form1.startYear.value);
+        var endYear = parseInt(form1.endYear.value);
+        var startMonth = parseInt(form1.startMonth.value);
+        var endMonth = parseInt(form1.endMonth.value);
+        var startDay = parseInt(form1.startDay.value);
+        var endDay = parseInt(form1.endDay.value);
+
+        if(startYear > endYear) { // if start year is after end year
+            alert("End date must be after start date.");
+            return false;
+        } else if(startYear == endYear) { // if start year == end year
+            if(startMonth > endMonth) { // if start month is after end month
+                alert("End date must be after start date.");
+                return false;
+            } else if(startMonth == endMonth) {
+                if(startDay > endDay) {
+                    alert("End date must be after start date.");
+                    return false;
+                }
+            }
+        }
+
+        return true;
+
+    }
+</script>
+
 </html>

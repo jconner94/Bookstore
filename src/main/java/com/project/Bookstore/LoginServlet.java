@@ -36,18 +36,27 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if(user != null && user.getUserID() > 0 && !user.getIsSuspended()) {
-            session.setAttribute("uid", user.getUserID());
-            session.setAttribute("firstName", user.getFirstName());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
-            dispatcher.forward(request, response);
-        } else if(user != null && user.getIsSuspended()) {
-            session.setAttribute("email", email);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/suspended.jsp");
-            dispatcher.forward(request, response);
-        } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+        if(user != null && user.getUserID() > 0) {
+            if(user.getIsSuspended()) {
+                session.setAttribute("email", email);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/suspended.jsp");
                 dispatcher.forward(request, response);
+            } else if(user.getIsAdmin()) {
+                session.setAttribute("uid", user.getUserID());
+                session.setAttribute("firstName", user.getFirstName());
+                session.setAttribute("email", user.getEmail());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminMain.html");
+                dispatcher.forward(request, response);
+            } else {
+                session.setAttribute("uid", user.getUserID());
+                session.setAttribute("firstName", user.getFirstName());
+                session.setAttribute("email", user.getEmail());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
+                dispatcher.forward(request, response);
+            }
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            dispatcher.forward(request, response);
         }
 
     }

@@ -46,7 +46,7 @@
 
 <div class = "editLogin">
     <h1>Admin Login</h1>
-    <form action="AdminMain.html" id="login" method="post">
+    <form action="<%= request.getContextPath() %>/login-servlet" id="login" method="post">
         <label><b>Email</b></label><br>
         <input type="text" name="email" placeholder="Email..." id="username2" required/>
         <br><br>
