@@ -68,7 +68,7 @@
         <div class="option">
             <img src="resources/profile-icon.svg" class="images" width="100%" height="100%">
             <div class="middle">
-                <form method="post" action="index.html"> <!-- Needs changing -->
+                <form method="get" action="edit-book-servlet">
                     <button type="submit" class="shopButton" name="shopButton">Edit Book Info</button>
                 </form>
             </div>

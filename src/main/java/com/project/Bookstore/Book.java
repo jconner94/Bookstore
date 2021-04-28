@@ -1,8 +1,8 @@
 package com.project.Bookstore;
 
 public class Book {
-    private int isbn;
-    private String edition;
+    private Long isbn;
+    private int edition;
     private int minimumThreshold;
     private int currentStock;
     private double buyPrice;
@@ -12,22 +12,23 @@ public class Book {
     private String coverPic;
     private String publisher;
     private String title;
+    private String description;
     private int pubYear;
 
 
-    public int getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 
-    public String getEdition() {
+    public int getEdition() {
         return edition;
     }
 
-    public void setEdition(String edition) {
+    public void setEdition(int edition) {
         this.edition = edition;
     }
 
@@ -56,7 +57,7 @@ public class Book {
     }
 
     public double getSellPrice() {
-        return isbn;
+        return sellPrice;
     }
 
     public void setSellPrice(double sellPrice) {
@@ -102,6 +103,10 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
 
     public int getPubYear() {
         return pubYear;

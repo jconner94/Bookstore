@@ -1,8 +1,6 @@
 package com.project.Bookstore;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
@@ -12,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.Integer;
 import java.lang.Double;
+import java.lang.Long;
 
 @WebServlet(name = "addBookServlet", value ="/add-book-servlet")
 public class AddBookServlet extends HttpServlet {
@@ -28,13 +27,18 @@ public class AddBookServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer isbn = new Integer(0);
-        isbn = Integer.parseInt(request.getParameter("isbn"));
+        Long isbn = new Long(0);
+        isbn = Long.parseLong(request.getParameter("isbn"));
 
         String title = request.getParameter("title");
         String author = request.getParameter("author");
-        String edition = request.getParameter("edition");
+        String category = request.getParameter("category");
         String publisher = request.getParameter("publisher");
+        String cover = request.getParameter("bookCover");
+        String description = request.getParameter("description");
+
+        Integer edition = new Integer(0);
+        edition = Integer.parseInt(request.getParameter("edition"));
 
         Integer pubYear = new Integer(0);
         pubYear = Integer.parseInt(request.getParameter("pubYear"));
@@ -51,19 +55,20 @@ public class AddBookServlet extends HttpServlet {
         Double sellPrice = new Double(0);
         sellPrice = Double.parseDouble(request.getParameter("sellPrice"));
 
-        /*  File bookCover = request.getParameter("bookCover"); */
-
         Book book = new Book();
         book.setIsbn(isbn);
         book.setTitle(title);
         book.setAuthorName(author);
+        book.setCategory(category);
         book.setEdition(edition);
         book.setPublisher(publisher);
+        book.setCoverPic(cover);
         book.setPubYear(pubYear);
         book.setCurrentStock(quantity);
         book.setMinimumThreshold(minThreshold);
         book.setBuyPrice(buyPrice);
         book.setSellPrice(sellPrice);
+        book.setDescription(description);
 
         try {
             bookDao.addBook(book);

@@ -1,4 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.project.Bookstore.Book" %>
+<%@ page import="com.project.Bookstore.BookDao" %>
+<% BookDao bookDao = new BookDao(); %>
+<% session.setAttribute("book1", bookDao.getRandomBook()); %>
+<% session.setAttribute("book2", bookDao.getRandomBook()); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +45,7 @@
             <% } %>
             <!--<li><a href="register-servlet">
                 <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>-->
-            <li><a href="search.jsp"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+            <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
             <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
         </ul>
     </nav>
@@ -48,7 +53,7 @@
         <div class="featured-items">
             <div class="book-window">
                 <h2 class="section-title" id="demo">FEATURED</h2>
-                <a href="Sample1.html"><img src="${pageContext.request.contextPath}/resources/TheDevilInTheWhiteCity.jpg" class="images" height="500" width="300" alt=""></a>
+                <a href="book-servlet?title=${book1.title}"><img src="${pageContext.request.contextPath}/resources/${book1.coverPic}" class="images" height="500" width="300" alt=""></a>
                 <br><br>
                 <button type="submit" id="submit2" >Add to Cart</button>
                 <br><br>
@@ -56,7 +61,7 @@
 
             <div class="book-window">
                 <h2 class="section-title" id="demo2">TOP SELLERS</h2>
-                <a href="Sample2.html"><img src="${pageContext.request.contextPath}/resources/HarryPotterAndTheChamberOfSecrets.jpg" class="images" height="500" width="300" alt=""></a>
+                <a href="book-servlet?title=${book2.title}"><img src="${pageContext.request.contextPath}/resources/${book2.coverPic}" class="images" height="500" width="300" alt=""></a>
                 <br><br>
                 <button type="submit" id="submit2" >Add to Cart</button>
                 <br><br>

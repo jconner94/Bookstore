@@ -28,7 +28,27 @@ public class SearchServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String search = request.getParameter("username");
+        String query = request.getParameter("query");
+        Book[] results = null;
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+
+        try {
+            results = bookDao.getBookSearch(query);
+            if(results.length > 1) {
+                request.setAttribute("Books", results);
+                dispatcher = request.getRequestDispatcher("/searchResults.jsp");
+            } else if(results.length == 1) {
+                dispatcher = request.getRequestDispatcher("/book-servlet?title=" + results[0].getTitle());
+            } else {
+                dispatcher = request.getRequestDispatcher("/noResults.jsp");
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        dispatcher.forward(request, response);
+
+        /*String search = request.getParameter("username");
         String[] desp = new String[13];
         PrintWriter writer = response.getWriter();
         writer.print(search);
@@ -43,6 +63,6 @@ public class SearchServlet extends HttpServlet {
             writer.println(htmlRespone);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
