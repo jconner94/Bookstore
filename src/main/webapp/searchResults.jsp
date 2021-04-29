@@ -39,5 +39,6 @@
     <button type="submit" id="submit">Return to Search</button>
     <br><br>
 </form>
+<% session.removeAttribute("Books"); %>
 </body>
 </html>

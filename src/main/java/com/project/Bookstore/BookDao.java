@@ -230,4 +230,63 @@ public class BookDao {
         }
     }
 
+    public int updateBook(Book book) throws ClassNotFoundException {
+        String UPDATE_BOOK_SQL = "UPDATE book SET isbn = ?, category = ?," +
+                "authorName = ?, title = ?, coverPic = ?, edition = ?," +
+                "publisher = ?, publicationYear = ?, quantityInStock = ?," +
+                "minimumThresh = ?, buyPrice = ?, sellPrice = ?, description = ? " +
+                "WHERE title = ?;";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement editStatement = conn.prepareStatement(UPDATE_BOOK_SQL);
+            editStatement.setLong(1, book.getIsbn());
+            editStatement.setString(2, book.getCategory());
+            editStatement.setString(3, book.getAuthorName());
+            editStatement.setString(4, book.getTitle());
+            editStatement.setString(5, book.getCoverPic());
+            editStatement.setInt(6, book.getEdition());
+            editStatement.setString(7, book.getPublisher());
+            editStatement.setInt(8, book.getPubYear());
+            editStatement.setInt(9, book.getCurrentStock());
+            editStatement.setInt(10, book.getMinimumThreshold());
+            editStatement.setDouble(11, book.getBuyPrice());
+            editStatement.setDouble(12, book.getSellPrice());
+            editStatement.setString(13, book.getDescription());
+            editStatement.setString(14, book.getTitle());
+
+            result = editStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException in updateBook");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public int deleteBookByTitle(String title) throws ClassNotFoundException {
+        String DELETE_BOOK_SQL = "DELETE FROM book WHERE title = ?;";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement deleteStatement = conn.prepareStatement(DELETE_BOOK_SQL);
+            deleteStatement.setString(1, title);
+            System.out.println(deleteStatement);
+            result = deleteStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException in deleteBookByTitle");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }
