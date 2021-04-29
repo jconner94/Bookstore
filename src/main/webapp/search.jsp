@@ -48,7 +48,7 @@
             <button type="submit" id="action" value="Submit">Search!</button>
             <br><br>
         </form>
-        <b><%= session.getAttribute("searchResult")  %></b>
+        <p name="searchResult" value=c:out value=${searchResult}></p>
     </div>
 </main>
 <footer>Copyright &copy; 2021</footer>

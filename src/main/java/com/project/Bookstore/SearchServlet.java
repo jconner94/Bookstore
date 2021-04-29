@@ -33,8 +33,10 @@ public class SearchServlet extends HttpServlet {
         String[] desp = new String[13];
         try {
             desp = bookDao.findBook(search);
+            String url;
             String htmlResponse = "<html>";
-            htmlResponse += "<img src=\""+desp[4]+"\">";
+            url = "<img src=\""+request.getContextPath()+"/resources/"+desp[4]+"\" class=\"images\" height=\"500\" width=\"300\" alt=\"\">";
+            htmlResponse += url;
             htmlResponse += "<h3> Price: $" + desp[11] + "</h3><br>";
             htmlResponse += "<h3> ISBN: " + desp[0] + "</h3><br>";
             htmlResponse += "<h3> Genre: " + desp[1] + "</h3><br>";
@@ -46,7 +48,20 @@ public class SearchServlet extends HttpServlet {
             htmlResponse += "<h3> Books Left: " + desp[8] + "</h3><br>";
             htmlResponse += "<h3> Trade-in Value: $" + desp[10] + "</h3><br>";
             htmlResponse += "</html>";
-            request.getSession().setAttribute("searchResult",htmlResponse);
+            boolean empty = true;
+            for(int i=0; i<desp.length; i++) {
+                if(desp[i]==null) {
+                    empty = true;
+                } else {
+                    empty = false;
+                    i=100;
+                }
+            }
+            if(!empty) {
+                request.getSession().setAttribute("searchResult", htmlResponse);
+            } else {
+                request.getSession().setAttribute("searchResult", "<html><h3>Book Does not Exist</h3></html>");
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
