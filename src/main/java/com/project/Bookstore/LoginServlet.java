@@ -45,13 +45,15 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("uid", user.getUserID());
                 session.setAttribute("firstName", user.getFirstName());
                 session.setAttribute("email", user.getEmail());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminMain.html");
+                session.setAttribute("isAdmin", user.getIsAdmin());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminMain.jsp");
                 dispatcher.forward(request, response);
             } else {
                 session.setAttribute("uid", user.getUserID());
                 session.setAttribute("firstName", user.getFirstName());
                 session.setAttribute("email", user.getEmail());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
+                session.setAttribute("isAdmin", user.getIsAdmin());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                 dispatcher.forward(request, response);
             }
         } else {

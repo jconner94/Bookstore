@@ -1,17 +1,36 @@
 package com.project.Bookstore;
 
 import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDao {
     private final String jdbcUrl = "jdbc:mysql://localhost:3306/bookstore";
     private final String dbUser = "root";
     private final String dbPass = "root";
     private final String encrypt = "jcTZkjKW";
+
+    public int getUserCount() throws ClassNotFoundException {
+        String FETCH_COUNT_SQL = "SELECT MAX(userID) FROM users";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement countStatement = conn.prepareStatement(FETCH_COUNT_SQL);
+            ResultSet rs = countStatement.executeQuery();
+
+            if(rs.next()) {
+                result = rs.getInt("MAX(userID)");
+            }
+        } catch(SQLException e) {
+            System.out.println("SQLError in getUserCount");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
     public int registerUser(User user) throws ClassNotFoundException {
         String FETCH_ID_SQL = "SELECT MAX(userID) FROM users";
@@ -183,6 +202,37 @@ public class UserDao {
         return result;
     }
 
+    public User[] getUserList() throws ClassNotFoundException {
+        String GET_USERS_SQL = "SELECT userID, firstName, lastName, email, isSuspended " +
+                "FROM users";
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        User[] users = new User[getUserCount()];
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement usersStatement = conn.prepareStatement(GET_USERS_SQL);
+            ResultSet rs = usersStatement.executeQuery();
+
+            int index = 0;
+
+            while(rs.next()) {
+                int userID = rs.getInt("userID");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String email = rs.getString("email");
+                boolean isSuspended = rs.getBoolean("isSuspended");
+                users[index] = new User(userID, firstName, lastName, email, isSuspended);
+            }
+        } catch(SQLException e) {
+            System.out.println("SQL Error in getUserList");
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
     public int changeUserSuspension(int userID, boolean suspendStatus) throws ClassNotFoundException {
         String UPDATE_STATUS_URL = "UPDATE users SET isSuspended = ?, WHERE userID = ?";
 
@@ -204,17 +254,19 @@ public class UserDao {
         return result;
     }
 
-    public void banUser(int userID, int status) throws ClassNotFoundException {
-        String BAN_USER_ACCOUNT = "UPDATE users SET isSuspended = ?, WHERE userID = ?";
+    public void banUser(int status, int userID) throws ClassNotFoundException {
+        String BAN_USER_ACCOUNT = "UPDATE users SET isSuspended = ? WHERE userID = ?";
 
         Class.forName("com.mysql.jdbc.Driver");
+
+        //System.out.println("")
 
         try {
             Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
             PreparedStatement banStatement = conn.prepareStatement(BAN_USER_ACCOUNT);
             banStatement.setInt(1, status);
             banStatement.setInt(2, userID);
-            banStatement.executeQuery();
+            banStatement.executeUpdate();
 
         } catch(SQLException e) {
             System.out.println("SQL Error in getLoginInfo");

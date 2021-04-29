@@ -14,6 +14,8 @@ public class Promotion {
     private boolean isSent;
 
 
+    public Promotion() { isSent = false; }
+
     public Promotion(String promoCode, String title, String description,
                      String startYear, String startMonth, String startDay,
                      String endYear, String endMonth, String endDay,
@@ -29,6 +31,23 @@ public class Promotion {
         setEndDay(endDay);
         setPercentage(percentage);
         isSent = false;
+    }
+
+    public Promotion(String promoCode, String title, String description,
+                     String startYear, String startMonth, String startDay,
+                     String endYear, String endMonth, String endDay,
+                     double percentage, boolean isSent) {
+        setPromoCode(promoCode);
+        setTitle(title);
+        setDescription(description);
+        setStartYear(startYear);
+        setStartMonth(startMonth);
+        setStartDay(startDay);
+        setEndYear(endYear);
+        setEndMonth(endMonth);
+        setEndDay(endDay);
+        setPercentage(percentage);
+        setIsSent(isSent);
     }
 
 

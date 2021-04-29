@@ -23,7 +23,7 @@ public class EditServlet extends HttpServlet {
         response.getWriter().append("Served at: ").append(request.getContextPath());
 
         User user = new User();
-        user.setUserID(1);
+        user.setUserID(Integer.parseInt(request.getSession(false).getAttribute("uid").toString()));
 
         try {
             String[] userInfo = userDao.fetchUserInfo(user);
