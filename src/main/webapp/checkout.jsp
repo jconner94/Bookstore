@@ -35,7 +35,7 @@
 <main>
     <div style="text-align: center;"><h1>Checkout</h1></div>
     <div class="login">
-        <form action="loggedInIndex.jsp">
+        <form action="loggedInIndex.jsp" id="checkout">
             <h1>Address</h1>
             <br>
             <label><b>Street Address:</b></label><br>
@@ -46,6 +46,9 @@
             <br><br>
             <label><b>State:</b></label><br>
             <input type="text" placeholder="Enter state..." id="password" required>
+            <br><br>
+            <label><b>Email:</b></label><br>
+            <input type="text" placeholder="Enter email for confirmation..." id="password2" required>
             <br><br>
             <h1>Card Info</h1>
             <label><b>Card Number:</b></label>
@@ -85,7 +88,7 @@
             <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                    autocomplete="CVV" maxlength="3" placeholder="xxx" id="username"/>
             <br><br>
-            <button type="submit" id="checkoutButton" value="Submit">Checkout!</button>
+            <button type="submit" id="checkoutButton" onClick="checkoutMail()" value="Submit">Checkout!</button>
             <br><br>
         </form>
     </div>
@@ -139,4 +142,19 @@
     <% } %>
 </ul>
 </body>
+<script type="text/javascript">
+    function checkoutEmail() {
+        var form1 = document.getElementById('checkout');
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "bookstore3c@gmail.com",
+            Password: "strongestpassword#1",
+            To: String(form1.password2.value),
+            From: "bookstore3c@gmail.com",
+            Subject: "Checkout Successful",
+            Body: "You have successfully made a purchase!",
+        })
+        alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
+    }
+</script>
 </html>
