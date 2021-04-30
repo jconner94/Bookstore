@@ -106,6 +106,7 @@
                 <option value="29">2029</option>
                 <option value="30">2030</option>
             </select>
+            <br><br>
             <label><b>Security Code:</b></label>
             <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                    autocomplete="CVV" maxlength="3" placeholder="xxx" id="username"/>
@@ -150,7 +151,7 @@
             <p class="money">Shipping: <%=shippingPrice%></p>
             <% tax = Math.floor(100 * (shippingPrice + totalPrice) * 0.07) / 100;%>
             <p class="money">Tax: <%=tax%></p>
-            <p class="money">Total: <%=Math.floor(100 *(totalPrice + shippingPrice + tax)) / 100%></p>
+            <p class="money">Total: <%=Math.floor(100 * (totalPrice + shippingPrice + tax)) / 100%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>

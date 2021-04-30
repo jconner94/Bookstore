@@ -26,7 +26,7 @@
         <ul class="links">
             <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
             <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
-            <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
+            <li><a href="history.jsp" style="text-decoration: none; color: white">History</a></li>
         </ul>
         <ul class="greeting">
             <% if(session.getAttribute("firstName") == null) { %>
