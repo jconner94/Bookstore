@@ -64,7 +64,7 @@ public class CartServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/loggedInIndex.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
 
     }
