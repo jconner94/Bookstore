@@ -83,7 +83,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <form method="post" action="${pageContext.request.contextPath}/checkout-servlet">
+    <form method="get" action="${pageContext.request.contextPath}/checkout-servlet">
         <button type="submit" id="cartButton">Go to Checkout</button>
     </form>
 </main>

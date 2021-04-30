@@ -25,7 +25,11 @@ public class CheckoutServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
         response.setContentType("text/html");
-        Book[] cart = null;
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/checkout.jsp");
+        dispatcher.forward(request, response);
+
+        /*Book[] cart = null;
         int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
         try {
             cart = cartDao.getCurrentCart(Integer.parseInt(request.getSession().getAttribute("uid").toString()));
@@ -38,12 +42,27 @@ public class CheckoutServlet extends HttpServlet {
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Cart.jsp");
         //RequestDispatcher dispatcher = request.getRequestDispatcher("checkout.jsp");
-        dispatcher.forward(request, response);
+        dispatcher.forward(request, response);*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/checkout.jsp");
-            dispatcher.forward(request, response);
+        int userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
+        try {
+            checkout(userID);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("successfulCheckout.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    public void checkout(int userID) throws ClassNotFoundException {
+        Book[] cart = cartDao.getCurrentCart(userID);
+        bookDao.processOrder(cart);
+        for(int i = 0; i < cart.length; i++) {
+            cartDao.removeBookFromCart(userID, cart[i].getTitle());
+        }
     }
 
 }
