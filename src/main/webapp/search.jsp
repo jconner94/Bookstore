@@ -43,12 +43,11 @@
             <h1>Search For Books</h1>
             <br>
             <label><b>Book Title, Author, or Genre:</b></label><br>
-            <input type="text" placeholder="Enter your search..." id="username" name="search" required>
+            <input type="text" name="query" placeholder="Enter your search..." id="query" maxlength="64" required>
             <br><br>
             <button type="submit" id="action" value="Submit">Search!</button>
             <br><br>
         </form>
-        <p name="searchResult" value=c:out value=${searchResult}></p>
     </div>
 </main>
 <footer>Copyright &copy; 2021</footer>

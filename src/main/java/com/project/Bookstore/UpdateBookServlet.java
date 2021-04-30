@@ -1,6 +1,8 @@
 package com.project.Bookstore;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
@@ -10,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.Integer;
 import java.lang.Double;
-import java.lang.Long;
 
-@WebServlet(name = "addBookServlet", value ="/add-book-servlet")
-public class AddBookServlet extends HttpServlet {
+@WebServlet(name = "updateBookServlet", value ="/update-book-servlet")
+public class UpdateBookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private BookDao bookDao = new BookDao();
@@ -22,38 +23,43 @@ public class AddBookServlet extends HttpServlet {
         response.getWriter().append("Served at: ").append(request.getContextPath());
         response.setContentType("text/html");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/addNewBook.jsp");
+        //System.out.println("doGet: with " + request.getParameter("title"));
+        try {
+            Book book = bookDao.getBookByTitle(request.getParameter("title"));
+            request.setAttribute("Book", book);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Book.jsp");
         dispatcher.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long isbn = new Long(0);
-        isbn = Long.parseLong(request.getParameter("isbn"));
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.setContentType("text/html");
 
+        long isbn = Long.parseLong(request.getParameter("isbn"));
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String category = request.getParameter("category");
         String publisher = request.getParameter("publisher");
-        String cover = request.getParameter("bookCover");
         String description = request.getParameter("description");
-
-        Integer edition = new Integer(0);
-        edition = Integer.parseInt(request.getParameter("edition"));
-
-        Integer pubYear = new Integer(0);
-        pubYear = Integer.parseInt(request.getParameter("pubYear"));
-
-        Integer quantity = new Integer(1);
-        quantity = Integer.parseInt(request.getParameter("quantity"));
-
-        Integer minThreshold = new Integer(1);
-        minThreshold = Integer.parseInt(request.getParameter("minThreshold"));
-
-        Double buyPrice = new Double(0);
-        buyPrice = Double.parseDouble(request.getParameter("buyPrice"));
-
-        Double sellPrice = new Double(0);
-        sellPrice = Double.parseDouble(request.getParameter("sellPrice"));
+        int edition = Integer.parseInt(request.getParameter("edition"));
+        int pubYear = Integer.parseInt(request.getParameter("pubYear"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int minThreshold = Integer.parseInt(request.getParameter("minThreshold"));
+        double buyPrice = Double.parseDouble(request.getParameter("buyPrice"));
+        double sellPrice = Double.parseDouble(request.getParameter("sellPrice"));
+        String cover;
+        if(request.getParameter("newBookCover").equals("")) {
+            System.out.println("newBookCover == null");
+            cover = request.getParameter("bookCover");
+        } else {
+            System.out.println("else");
+            System.out.println(request.getParameter("newBookCover"));
+            cover = request.getParameter("newBookCover");
+        }
 
         Book book = new Book();
         book.setIsbn(isbn);
@@ -71,7 +77,7 @@ public class AddBookServlet extends HttpServlet {
         book.setDescription(description);
 
         try {
-            bookDao.addBook(book);
+            bookDao.updateBook(book);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

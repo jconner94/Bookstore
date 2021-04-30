@@ -48,6 +48,13 @@
             box-sizing: border-box;
         }
 
+        #category {
+            width: 100%;
+            padding: 1px 2px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
         #edition {
             width: 100%;
             padding: 1px 2px;
@@ -95,6 +102,15 @@
             padding: 1px 2px;
             margin: 10px;
             box-sizing: border-box;
+        }
+
+        #description {
+            width: 100%;
+            height: 150px;
+            padding: 1px 2px;
+            margin: 10px;
+            box-sizing: border-box;
+            text-align: left;
         }
 
         #submit {
@@ -149,6 +165,9 @@
             <label><b>Author(s):</b></label>
             <input type="text" name="author" placeholder="Enter Author(s)..." id="author" required>
             <br><br>
+            <label><b>Category:</b></label>
+            <input type="text" name="category" placeholder="Enter Category..." id="category" required>
+            <br><br>
             <label><b>Edition:</b></label>
             <input type="text" name="edition" placeholder="Enter Edition..." id="edition" required>
             <br><br>
@@ -169,6 +188,9 @@
             <br><br>
             <label><b>Selling Price:</b></label>
             <input type="text" name="sellPrice" placeholder="Enter Selling Price..." id="sellprice" required>
+            <br><br>
+            <label><b>Description:</b></label>
+            <textarea name="description" placeholder="Enter Book Description..." id="description" maxlength="4096" required></textarea>
             <br><br>
             <label><b>Book Cover:</b></label>
             <input type="file" name="bookCover" id="bookcover" required>

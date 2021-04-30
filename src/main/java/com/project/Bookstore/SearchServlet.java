@@ -25,47 +25,44 @@ public class SearchServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
-        request.getSession().setAttribute("searchResult","");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String search = request.getParameter("search");
-        String[] desp = new String[13];
+        String query = request.getParameter("query");
+        Book[] results = null;
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+
         try {
-            desp = bookDao.findBook(search);
-            String url;
-            String htmlResponse = "<html>";
-            url = "<img src=\""+request.getContextPath()+"/resources/"+desp[4]+"\" class=\"images\" height=\"500\" width=\"300\" alt=\"\">";
-            htmlResponse += url;
-            htmlResponse += "<h3> Price: $" + desp[11] + "</h3><br>";
-            htmlResponse += "<h3> ISBN: " + desp[0] + "</h3><br>";
-            htmlResponse += "<h3> Genre: " + desp[1] + "</h3><br>";
-            htmlResponse += "<h3> Author: " + desp[2] + "</h3><br>";
-            htmlResponse += "<h3> Title: " + desp[3] + "</h3><br>";
-            htmlResponse += "<h3> Edition #: " + desp[5] + "</h3><br>";
-            htmlResponse += "<h3> Publisher: " + desp[6] + "</h3><br>";
-            htmlResponse += "<h3> Publication Year: " + desp[7] + "</h3><br>";
-            htmlResponse += "<h3> Books Left: " + desp[8] + "</h3><br>";
-            htmlResponse += "<h3> Trade-in Value: $" + desp[10] + "</h3><br>";
-            htmlResponse += "</html>";
-            boolean empty = true;
-            for(int i=0; i<desp.length; i++) {
-                if(desp[i]==null) {
-                    empty = true;
-                } else {
-                    empty = false;
-                    i=100;
-                }
-            }
-            if(!empty) {
-                request.getSession().setAttribute("searchResult", htmlResponse);
+            results = bookDao.getBookSearch(query);
+            if(results.length > 1) {
+                request.setAttribute("Books", results);
+                dispatcher = request.getRequestDispatcher("/searchResults.jsp");
+            } else if(results.length == 1) {
+                dispatcher = request.getRequestDispatcher("/book-servlet?title=" + results[0].getTitle());
             } else {
-                request.getSession().setAttribute("searchResult", "<html><h3>Book Does not Exist</h3></html>");
+                dispatcher = request.getRequestDispatcher("/noResults.jsp");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
+
         dispatcher.forward(request, response);
+
+        /*String search = request.getParameter("username");
+        String[] desp = new String[13];
+        PrintWriter writer = response.getWriter();
+        writer.print(search);
+        try {
+            desp = bookDao.findBook(search);
+            int i = 0;
+            String htmlRespone = "";
+            while (desp[i] != null && i < 13) {
+                htmlRespone += "<h2>" + desp[i] + "</h2><br>";
+                i++;
+            }
+            writer.println(htmlRespone);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }*/
     }
 }
