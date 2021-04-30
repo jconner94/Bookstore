@@ -119,11 +119,11 @@
             </tbody>
         </table>
             <br><br>
-            <p class="money">Sub-total: <%totalPrice%></p>
-            <p class="money">Shipping: <%shippingPrice%></p>
-            <% tax = (shippingPrice + totalPrice) * 0.07%>
-            <p class="money">Tax: <%tax%></p>
-            <p class="money">Total: <%totalPrice + shippingPrice + tax%></p>
+            <p class="money">Sub-total: <%System.out.println(totalPrice);%></p>
+            <p class="money">Shipping: <%System.out.println(shippingPrice);%></p>
+            <% tax = (shippingPrice + totalPrice) * 0.07;%>
+            <p class="money">Tax: <%System.out.println(tax);%></p>
+            <p class="money">Total: <%System.out.println(totalPrice + shippingPrice + tax);%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>
