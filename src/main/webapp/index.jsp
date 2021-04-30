@@ -43,8 +43,6 @@
                 <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
             <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
             <% } %>
-            <!--<li><a href="register-servlet">
-                <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>-->
             <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
             <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
         </ul>
@@ -72,22 +70,3 @@
     <footer>Copyright &copy; 2021</footer>
 </body>
 </html>
-
-    <!--<div>
-        <h1>Bookstore Project</h1>
-        <form action="/register" method="post">
-            <p>
-                First Name: <input type="text" name="firstName" placeholder="First Name..." required />
-            </p>
-            <p>
-                Last Name: <input type="text" name="lastName" placeholder="Last Name..." required />
-            </p>
-            <p>
-                <button type="submit" name="info" value="Submit">Click Here</button>
-            </p>
-        </form>
-    </div>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>-->

@@ -50,8 +50,8 @@
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.jsp"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="login.jsp"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
+        <li><a href="search-servlet"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="logout-servlet"><img src="resources/logout-icon.png" alt="" class="top-icon" id="entry"></a></li>
         <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>

@@ -144,14 +144,13 @@
         <li><a href="Contact.html" style="text-decoration: none; color: white">Contact</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
-        <li><a href="register-servlet">
-            <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
-        <li><a href="search.jsp"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
-        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
+        <li><a href="search-servlet"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="logout-servlet"><img src="resources/logout-icon.png" alt="" class="top-icon" id="entry"></a></li>
+        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
 <main>
+    <h2 class="welcome-message" id="demo">Welcome ${firstName}!</h2>
     <div class="newbook">
         <form action="<%= request.getContextPath() %>/add-book-servlet" id="addBook" method="post">
             <h1>New Book</h1>

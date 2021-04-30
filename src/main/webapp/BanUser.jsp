@@ -24,14 +24,13 @@
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
-        <li><a href="register-servlet">
-            <img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
-        <li><a href="search.jsp"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
-        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
+        <li><a href="search-servlet"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="logout-servlet"><img src="resources/logout-icon.png" alt="" class="top-icon" id="entry"></a></li>
+        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
 <main>
+    <h2 class="welcome-message" id="demo">Welcome ${firstName}!</h2>
     <form action="<%= request.getContextPath() %>/ban-servlet" id="BanUser" method="post">
         <label for="userid">Enter User ID:</label>
         <input type="text" id="userid" name="userid"><br>

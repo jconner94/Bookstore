@@ -24,10 +24,23 @@
         <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
+    <ul class="greeting">
+        <% if(session.getAttribute("firstName") == null) { %>
+        <li> Hi Guest!</li>
+        <% } else {%>
+        <li>Hi ${firstName}!</li>
+        <% } %>
+    </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="account.html"><img src="resources/profile-icon.svg" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <% if(session.getAttribute("uid") == null) { %>
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="register-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <% } else {%>
+        <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
+        <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <% } %>
+        <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
     </ul>
 </nav>
 <main>
