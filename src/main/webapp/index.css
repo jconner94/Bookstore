@@ -209,3 +209,14 @@ footer {
     height: 50px;
     width: 50px;
 }
+
+.checkoutColumn {
+    flex: 50%;
+    margin: auto;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    border: 3px solid #080808;
+    padding: 50px;
+}
+
