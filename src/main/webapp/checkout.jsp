@@ -121,7 +121,7 @@
         <h1>Books in Cart:</h1>
         <% int uid = Integer.parseInt(session.getAttribute("uid").toString()); %>
         <% double totalPrice = 0;%>
-        <% double promotion = .75;
+        <% double promotion = .75; %>
         <% double shippingPrice = 10.00;
         double tax; %>
         <% try { session.setAttribute("Books", new CartDao().getCurrentCart(uid)); }

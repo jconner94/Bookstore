@@ -57,7 +57,9 @@
                 <h2 class="section-title" id="demo">FEATURED</h2>
                 <a href="book-servlet?title=${book1.title}"><img src="${pageContext.request.contextPath}/resources/${book1.coverPic}" class="images" height="500" width="300" alt=""></a>
                 <br><br>
-                <button type="submit" id="submit2" >Add to Cart</button>
+                <form action="<%= request.getContextPath() %>/cart-servlet?bookCover=${book1.coverPic}&title=${book1.title}" id ="cartButton" method="post">
+                    <button type="submit" id="addCart" value="add">Add to Cart</button>
+                </form>
                 <br><br>
             </div>
 
@@ -65,7 +67,9 @@
                 <h2 class="section-title" id="demo2">TOP SELLERS</h2>
                 <a href="book-servlet?title=${book2.title}"><img src="${pageContext.request.contextPath}/resources/${book2.coverPic}" class="images" height="500" width="300" alt=""></a>
                 <br><br>
-                <button type="submit" id="submit2" >Add to Cart</button>
+                <form action="<%= request.getContextPath() %>/cart-servlet?bookCover=${book2.coverPic}&title=${book2.title}" id ="cartButton" method="post">
+                    <button type="submit" id="addCart" value="add">Add to Cart</button>
+                </form>
                 <br><br>
             </div>
 
