@@ -61,6 +61,9 @@
             <li>Current Stock: ${Book.currentStock}</li>
             <li>Price: $${Book.sellPrice}</li>
         </ul>
+        <form action="<%= request.getContextPath() %>/cart-servlet" id ="cartButton" method="post">
+            <button type="button" id="addCart" value="add"></button>
+        </form>
     </div>
 </main>
 <footer>Copyright &copy; 2021</footer>

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 
 
-@WebServlet("/cart")
+@WebServlet(name = "cart", value = "/cart-servlet")
 public class CartServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
