@@ -103,16 +103,27 @@ public class BookDao {
     }
 
     public Book[] getBookSearch(String query) throws ClassNotFoundException {
-        long longQuery = Long.parseLong(query); // add to sql
         String[] words = query.split(" ");
-        String[] categories = {"title", "authorName", "category"};
+        long[] longQuery = new long[words.length];
+        for(int i = 0; i < words.length; i++) {
+            try {
+                longQuery[i] = Long.parseLong(words[i]);
+            } catch (NumberFormatException e) {
+                longQuery[i] = 0;
+            }
+        }
+        String[] categories = {"isbn", "title", "authorName", "category"};
         String COUNT_BOOKS_SQL = "SELECT COUNT(*) FROM book WHERE ";
         String BOOK_SEARCH_SQL = "SELECT * FROM book WHERE ";
         String whereClause = "";
         for(int i = 0; i < categories.length; i++) {
             whereClause += categories[i] + " LIKE ";
             for (int j = 0; j < words.length; j++) {
-                whereClause += ("'%" + words[j] + "%'");
+                if(i == 0) {
+                    whereClause += ("'" + longQuery[j] + "'");
+                } else {
+                    whereClause += ("'%" + words[j] + "%'");
+                }
                 if ((j + 1) < words.length) {
                     whereClause += " OR " + categories[i] + " LIKE ";
                 } else if ((i + 1) < categories.length) {
@@ -123,7 +134,7 @@ public class BookDao {
             }
         }
 
-        // System.out.println(BOOK_SEARCH_SQL);
+        System.out.println(whereClause);
 
         Book[] books = null;
 
@@ -353,6 +364,36 @@ public class BookDao {
         }
 
         return book;
+    }
+
+    public int processOrder(Book[] books) throws ClassNotFoundException {
+        String UPDATE_QUANTITY_SQL = "UPDATE book " +
+                "SET quantityInStock = (quantityInStock - 1) " +
+                "WHERE title = ";
+
+        for(int i = 0; i < books.length; i++) {
+            UPDATE_QUANTITY_SQL += "'" + books[i].getTitle() + "'";
+            if(i + 1 < books.length) {
+                UPDATE_QUANTITY_SQL += " OR title = ";
+            } else {
+                UPDATE_QUANTITY_SQL += ";";
+            }
+        }
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement updateStatement = conn.prepareStatement(UPDATE_QUANTITY_SQL);
+            result = updateStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException in processOrder");
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
 }

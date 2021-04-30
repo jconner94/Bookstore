@@ -21,7 +21,7 @@ public class EditPromotionServlet extends HttpServlet implements AdminInterface 
     private PromotionDao promoDao = new PromotionDao();
 
     public boolean adminCheck(HttpServletRequest request) {
-        if(request.getSession(false) == null) {
+        if(request.getSession(false) != null) {
             HttpSession session = request.getSession();
             boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
             return isAdmin;

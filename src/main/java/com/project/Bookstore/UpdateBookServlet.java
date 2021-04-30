@@ -21,7 +21,7 @@ public class UpdateBookServlet extends HttpServlet implements AdminInterface {
     private BookDao bookDao = new BookDao();
 
     public boolean adminCheck(HttpServletRequest request) {
-        if(request.getSession(false) == null) {
+        if(request.getSession(false) != null) {
             HttpSession session = request.getSession();
             boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
             return isAdmin;
@@ -35,7 +35,6 @@ public class UpdateBookServlet extends HttpServlet implements AdminInterface {
             response.getWriter().append("Served at: ").append(request.getContextPath());
             response.setContentType("text/html");
 
-            //System.out.println("doGet: with " + request.getParameter("title"));
             try {
                 Book book = bookDao.getBookByTitle(request.getParameter("title"));
                 request.setAttribute("Book", book);

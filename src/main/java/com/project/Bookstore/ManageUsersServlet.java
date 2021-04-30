@@ -17,7 +17,7 @@ public class ManageUsersServlet extends HttpServlet implements AdminInterface {
     private UserDao userDao = new UserDao();
 
     public boolean adminCheck(HttpServletRequest request) {
-        if(request.getSession(false) == null) {
+        if(request.getSession(false) != null) {
             HttpSession session = request.getSession();
             boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
             return isAdmin;

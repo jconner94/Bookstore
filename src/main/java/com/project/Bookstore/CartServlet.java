@@ -36,6 +36,7 @@ public class CartServlet extends HttpServlet {
             for(int i = 0; i < cart.length; i++) {
                 System.out.println(cart[i].getTitle());
             }
+            bookDao.processOrder(cart);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
