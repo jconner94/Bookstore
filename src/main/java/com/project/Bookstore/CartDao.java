@@ -84,4 +84,25 @@ public class CartDao {
 
         return cartContents;
     }
+
+    public int removeBookFromCart(int userID, String title) throws ClassNotFoundException {
+        String REMOVE_BOOK_SQL = "DELETE FROM cart WHERE customerID = ? AND title = ?;";
+
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement removeStatement = conn.prepareStatement(REMOVE_BOOK_SQL);
+            removeStatement.setInt(1, userID);
+            removeStatement.setString(2, title);
+            result = removeStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException in removeBookFromCart");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

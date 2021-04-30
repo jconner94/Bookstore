@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
     <h1 class="title">ContactPage</h1>
     <ul class="links">
         <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
-        <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
+        <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">

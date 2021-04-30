@@ -22,13 +22,13 @@
 <nav>
     <a href="index.php" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
     <ul class="links">
-        <li><a href="index.php" style="text-decoration: none; color: white">Home</a></li>
-        <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
+        <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
+        <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">
-        <li><a href="search.html"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="account.html"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
+        <li><a href="search-servlet"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
+        <li><a href="edit-servlet"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
         <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
     </ul>
 </nav>
@@ -108,7 +108,7 @@
                 </tr>
             <c:forEach var="book" items="${Books}">
                 <tr>
-                    <td><img src="${pageContext.request.contextPath}/resources/${book.coverPic}" class="images" height="500" width="300" alt=""></td>
+                    <td><img src="${pageContext.request.contextPath}/resources/${book.coverPic}" class="images" height="100" width="60" alt=""></td>
                     <td>${book.title}</td>
                     <td>${book.isbn}</td>
                     <td>${book.currentStock}</td>

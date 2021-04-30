@@ -18,7 +18,7 @@
     <a href="index.jsp" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
     <ul class="links">
         <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
-        <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
+        <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
     <ul class="icons">

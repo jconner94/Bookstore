@@ -25,7 +25,7 @@
         <a href="index.jsp" style="text-decoration: none; color: white"><h1 class="title">Bookstore</h1></a>
         <ul class="links">
             <li><a href="index.jsp" style="text-decoration: none; color: white">Home</a></li>
-            <li><a href="contact.html" style="text-decoration: none; color: white">Contact</a></li>
+            <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
             <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
         </ul>
         <ul class="greeting">
@@ -45,6 +45,7 @@
             <% } else {%>
                 <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
                 <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+                <li><a href="cart-servlet"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
             <% } %>
             <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
             <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>

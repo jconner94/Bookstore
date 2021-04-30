@@ -36,55 +36,76 @@ public class CartServlet extends HttpServlet {
             for(int i = 0; i < cart.length; i++) {
                 System.out.println(cart[i].getTitle());
             }
-            bookDao.processOrder(cart);
+            request.getSession().setAttribute("Cart", cart);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/checkout.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Cart.jsp");
+        //RequestDispatcher dispatcher = request.getRequestDispatcher("checkout.jsp");
         dispatcher.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cover = request.getParameter("bookCover");
         String title = request.getParameter("title");
+        boolean remove = false;
+        if(request.getParameter("remove") != null) {
+            remove = true;
+        }
+        if(remove) {
+            removeBook(request, response, title);
+        } else {
 
-        Book book = null;
+            Book book = null;
+
+            try {
+                book = bookDao.getBookByTitle(title);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            Long isbn = new Long(0);
+            isbn = book.getIsbn();
+
+            Integer quantity = new Integer(1);
+            quantity = book.getCurrentStock();
+
+            Double sellPrice = new Double(0);
+            sellPrice = book.getSellPrice();
+
+            Integer userID = new Integer(-1);
+            userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
+
+            Cart cart = new Cart();
+
+            cart.setCoverPic(cover);
+            cart.setTitle(title);
+            cart.setIsbn(isbn);
+            cart.setCurrentStock(quantity);
+            cart.setSellPrice(sellPrice);
+            cart.setUserID(userID);
+
+            try {
+                cartDao.addBookToCart(title, userID);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    private void removeBook(HttpServletRequest request, HttpServletResponse response, String title) throws ServletException, IOException {
+        int userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
 
         try {
-            book = bookDao.getBookByTitle(title);
+            cartDao.removeBookFromCart(userID, title);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        Long isbn = new Long(0);
-        isbn = book.getIsbn();
-
-        Integer quantity = new Integer(1);
-        quantity = book.getCurrentStock();
-
-        Double sellPrice = new Double(0);
-        sellPrice = book.getSellPrice();
-
-        Integer userID = new Integer(-1);
-        userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
-
-        Cart cart = new Cart();
-
-        cart.setCoverPic(cover);
-        cart.setTitle(title);
-        cart.setIsbn(isbn);
-        cart.setCurrentStock(quantity);
-        cart.setSellPrice(sellPrice);
-        cart.setUserID(userID);
-
-        try {
-            cartDao.addBookToCart(title, userID);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Cart.jsp");
         dispatcher.forward(request, response);
-
     }
 }

@@ -33,6 +33,7 @@
                 <td>${book.currentStock}</td>
                 <td>$${book.sellPrice}</td>
                 <td>${book.isbn}</td>
+                <td><button type="submit" formaction="${pageContext.request.contextPath}/cart-servlet?bookCover=${book.coverPic}&title=${book.title}" id ="cartButton" formmethod="post">Add to Cart</button></td>
             </tr>
         </c:forEach>
     </table>
