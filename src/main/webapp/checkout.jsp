@@ -113,17 +113,19 @@
                     <td>${book.isbn}</td>
                     <td>${book.currentStock}</td>
                     <td>$${book.sellPrice}</td>
+                    <% try {totalPrice = new CartDao().totalSellPrice(uid); }
+                    catch(ClassNotFoundException e) {e.printStackTrace(); }%>
 
                 </tr>
             </c:forEach>
             </tbody>
         </table>
             <br><br>
-            <p class="money">Sub-total: <%System.out.println(totalPrice);%></p>
-            <p class="money">Shipping: <%System.out.println(shippingPrice);%></p>
-            <% tax = (shippingPrice + totalPrice) * 0.07;%>
-            <p class="money">Tax: <%System.out.println(tax);%></p>
-            <p class="money">Total: <%System.out.println(totalPrice + shippingPrice + tax);%></p>
+            <p class="money">Sub-total: <%=totalPrice%></p>
+            <p class="money">Shipping: <%=shippingPrice%></p>
+            <% tax = Math.floor(100 * (shippingPrice + totalPrice) * 0.07) / 100;%>
+            <p class="money">Tax: <%=tax%></p>
+            <p class="money">Total: <%=totalPrice + shippingPrice + tax%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>

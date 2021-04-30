@@ -105,4 +105,29 @@ public class CartDao {
 
         return result;
     }
+
+    public double totalSellPrice(int userID) throws ClassNotFoundException {
+        String GET_SUM_SQL = "SELECT SUM(sellPrice) FROM cart WHERE customerID = ?;";
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        double totalPrice = 0.0;
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement totalStatement = conn.prepareStatement(GET_SUM_SQL);
+            totalStatement.setInt(1, userID);
+            ResultSet rs = totalStatement.executeQuery();
+
+            if(rs.next()) {
+                totalPrice = rs.getDouble(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException in totalSellPrice");
+            e.printStackTrace();
+        }
+
+        return totalPrice;
+    }
 }
