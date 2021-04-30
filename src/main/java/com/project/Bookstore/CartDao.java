@@ -47,4 +47,41 @@ public class CartDao {
 
         return result;
     } //addBookToCart
+
+    public Book[] getCurrentCart(int userID) throws ClassNotFoundException {
+        String GET_COUNT_SQL = "SELECT COUNT(*) FROM cart WHERE customerID = ?;";
+        String GET_CART_SQL = "SELECT title FROM cart WHERE customerID = ?;";
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        Book[] cartContents = null;
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement countStatement = conn.prepareStatement(GET_COUNT_SQL);
+            countStatement.setInt(1, userID);
+            int count = 0;
+            ResultSet rs = countStatement.executeQuery();
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+            cartContents = new Book[count];
+
+            PreparedStatement cartStatement = conn.prepareStatement(GET_CART_SQL);
+            cartStatement.setInt(1, userID);
+            rs = cartStatement.executeQuery();
+
+            int index = 0;
+
+            while(rs.next()) {
+                cartContents[index] = new BookDao().getBookInfoForCart(rs.getString(1));
+                index++;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException in getCurrentCart");
+            e.printStackTrace();
+        }
+
+        return cartContents;
+    }
 }

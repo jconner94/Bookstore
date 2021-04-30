@@ -23,12 +23,22 @@ public class CartServlet extends HttpServlet {
         super();
     }
 
+    private BookDao bookDao = new BookDao();
     private CartDao cartDao = new CartDao();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
         response.setContentType("text/html");
-
+        Book[] cart = null;
+        int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
+        try {
+            cart = cartDao.getCurrentCart(Integer.parseInt(request.getSession().getAttribute("uid").toString()));
+            for(int i = 0; i < cart.length; i++) {
+                System.out.println(cart[i].getTitle());
+            }
+        } catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/checkout.jsp");
         dispatcher.forward(request, response);
     }
@@ -37,14 +47,22 @@ public class CartServlet extends HttpServlet {
         String cover = request.getParameter("bookCover");
         String title = request.getParameter("title");
 
+        Book book = null;
+
+        try {
+            book = bookDao.getBookByTitle(title);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         Long isbn = new Long(0);
-        isbn = Long.parseLong(request.getParameter("isbn"));
+        isbn = book.getIsbn();
 
         Integer quantity = new Integer(1);
-        quantity = Integer.parseInt(request.getParameter("quantity"));
+        quantity = book.getCurrentStock();
 
         Double sellPrice = new Double(0);
-        sellPrice = Double.parseDouble(request.getParameter("sellPrice"));
+        sellPrice = book.getSellPrice();
 
         Integer userID = new Integer(-1);
         userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());

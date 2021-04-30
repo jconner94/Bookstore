@@ -47,6 +47,10 @@
     <div>
         <img src="${pageContext.request.contextPath}/resources/${Book.coverPic}" height="500" width="300" alt="">
         <h1>${Book.title}</h1>
+        <script>function getDescription() {
+            let desc = String(${Book.description});
+            return desc;
+        } </script>
         <ul class="book-info">
 
             <li>${Book.authorName}</li>
@@ -56,13 +60,16 @@
             <li>${Book.description}</li>
             </div>
             <br><br>
-            <li>Published by ${Book.publisher}</li>
+            <li>Published by: ${Book.publisher}</li>
             <li>Edition: ${Book.edition}</li>
             <li>Current Stock: ${Book.currentStock}</li>
             <li>Price: $${Book.sellPrice}</li>
         </ul>
-        <form action="<%= request.getContextPath() %>/cart-servlet" id ="cartButton" method="post">
-            <button type="button" id="addCart" value="add"></button>
+        <form action="<%= request.getContextPath() %>/cart-servlet?bookCover=${Book.coverPic}&title=${Book.title}" id ="cartButton" method="post">
+            <button type="submit" id="addCart" value="add">Add to Cart</button>
+        </form>
+        <form action="<%= request.getContextPath() %>/cart-servlet" id="cartButton" method="get">
+            <button type="submit" id="seeCart" value="see">See Cart</button>
         </form>
     </div>
 </main>

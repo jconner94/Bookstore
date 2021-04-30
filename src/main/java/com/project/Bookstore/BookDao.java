@@ -103,6 +103,7 @@ public class BookDao {
     }
 
     public Book[] getBookSearch(String query) throws ClassNotFoundException {
+        long longQuery = Long.parseLong(query); // add to sql
         String[] words = query.split(" ");
         String[] categories = {"title", "authorName", "category"};
         String COUNT_BOOKS_SQL = "SELECT COUNT(*) FROM book WHERE ";
@@ -287,6 +288,34 @@ public class BookDao {
         }
 
         return result;
+    }
+
+    public Book getBookInfoForCart(String title) throws ClassNotFoundException {
+        String GET_BOOK_SQL = "SELECT coverPic, title, isbn, quantityInStock, sellPrice " +
+                "FROM book WHERE title = ?;";
+
+        Book book = new Book();
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement getBookStatement= conn.prepareStatement(GET_BOOK_SQL);
+            getBookStatement.setString(1, title);
+            ResultSet rs = getBookStatement.executeQuery();
+            if(rs.next()) {
+                book.setCoverPic(rs.getString("coverPic"));
+                book.setTitle(rs.getString("title"));
+                book.setIsbn(rs.getLong("isbn"));
+                book.setCurrentStock(rs.getInt("quantityInStock"));
+                book.setSellPrice(rs.getDouble("sellPrice"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException in getBookInfoForCart");
+            e.printStackTrace();
+        }
+
+        return book;
     }
 
 }

@@ -33,6 +33,9 @@
                 <li> Hi Guest!</li>
             <% } else {%>
                 <li>Hi ${firstName}!</li>
+                <% if((Boolean) session.getAttribute("isAdmin")) { %>
+                    <li><a href="AdminMain.jsp" style="text-decoration: none; color: white">Admin Home</a></li>
+                <% } %>
             <% } %>
         </ul>
         <ul class="icons">
@@ -41,7 +44,7 @@
                 <li><a href="register-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
             <% } else {%>
                 <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
-            <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+                <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
             <% } %>
             <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
             <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>

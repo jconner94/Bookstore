@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.project.Bookstore.BookDao" %>
+<%@ page import="com.project.Bookstore.CartDao" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +92,8 @@
     </div>
     <aside class="checkoutColumn">
         <h1>Books in Cart:</h1>
-        <% try { session.setAttribute("Books", new BookDao().getAllBooks()); }
+        <% int uid = Integer.parseInt(session.getAttribute("uid").toString()); %>
+        <% try { session.setAttribute("Books", new CartDao().getCurrentCart(uid)); }
         catch(ClassNotFoundException e) { e.printStackTrace(); }%>
         <table class="table-cart">
             <tbody>
@@ -107,7 +109,7 @@
                     <td><img src="${pageContext.request.contextPath}/resources/${book.coverPic}" class="images" height="500" width="300" alt=""></td>
                     <td>${book.title}</td>
                     <td>${book.isbn}</td>
-                    <td>${book.quantity}</td>
+                    <td>${book.currentStock}</td>
                     <td>$${book.sellPrice}</td>
                 </tr>
             </c:forEach>
