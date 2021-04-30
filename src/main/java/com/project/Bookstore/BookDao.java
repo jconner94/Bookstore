@@ -213,6 +213,43 @@ public class BookDao {
 
         return book;
     }
+    public Book getBookByIsbn(int isbn) throws ClassNotFoundException {
+        String GET_BOOK_SQL = "SELECT * FROM book WHERE isbn = ?";
+
+        Book book = null;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement bookStatement = conn.prepareStatement(GET_BOOK_SQL);
+            bookStatement.setInt(1, isbn);
+            ResultSet rs = bookStatement.executeQuery();
+
+            if(rs.next()) {
+                book = new Book();
+                book.setIsbn(rs.getLong("isbn"));
+                book.setCategory(rs.getString("category"));
+                book.setAuthorName(rs.getString("authorName"));
+                book.setTitle(rs.getString("title"));
+                book.setCoverPic(rs.getString("coverPic"));
+                book.setEdition(rs.getInt("edition"));
+                book.setPublisher(rs.getString("publisher"));
+                book.setPubYear(rs.getInt("publicationYear"));
+                book.setCurrentStock(rs.getInt("quantityInStock"));
+                book.setMinimumThreshold(rs.getInt("minimumThresh"));
+                book.setBuyPrice(rs.getDouble("buyPrice"));
+                book.setSellPrice(rs.getDouble("sellPrice"));
+                book.setDescription(rs.getString("description"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException in getBookByTitle");
+            e.printStackTrace();
+        }
+
+        return book;
+    }
 
     public Book getRandomBook() {
         Random r = new Random();

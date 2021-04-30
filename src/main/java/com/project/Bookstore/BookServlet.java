@@ -26,7 +26,16 @@ public class BookServlet extends HttpServlet {
         //System.out.println("doGet: with " + request.getParameter("title"));
         try {
             Book book = bookDao.getBookByTitle(request.getParameter("title"));
-            request.setAttribute("Book", book);
+            if (book!=null) {
+                request.setAttribute("Book", book);
+            } else {
+                book = bookDao.getBookByIsbn((Integer.parseInt(request.getParameter("title"))));
+                if(book!=null) {
+                    request.setAttribute("Book", book);
+                } else {
+                    request.setAttribute("Book", "Book Not Found");
+                }
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
