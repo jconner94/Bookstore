@@ -111,6 +111,8 @@
             <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                    autocomplete="CVV" maxlength="3" placeholder="xxx" id="username"/>
             <br><br>
+            <label><b>Promo Code:</b></label>
+            <input type="text" name="promo" placeholder="Enter promo code...">
             <button type="submit" id="checkoutButton" onClick="return checkoutEmail()" value="Submit">Checkout!</button>
             <br><br>
         </form>
@@ -119,6 +121,7 @@
         <h1>Books in Cart:</h1>
         <% int uid = Integer.parseInt(session.getAttribute("uid").toString()); %>
         <% double totalPrice = 0;%>
+        <% double promotion = .75;
         <% double shippingPrice = 10.00;
         double tax; %>
         <% try { session.setAttribute("Books", new CartDao().getCurrentCart(uid)); }
@@ -151,7 +154,7 @@
             <p class="money">Shipping: <%=shippingPrice%></p>
             <% tax = Math.floor(100 * (shippingPrice + totalPrice) * 0.07) / 100;%>
             <p class="money">Tax: <%=tax%></p>
-            <p class="money">Total: <%=Math.floor(100 * (totalPrice + shippingPrice + tax)) / 100%></p>
+            <p class="money">Total: <%=Math.floor(100 * (totalPrice + shippingPrice + tax + promotion)) / 100%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>

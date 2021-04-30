@@ -121,4 +121,26 @@ public class PromotionDao {
 
         return result;
     }
+    public double isValidPromotion(String promoCode) throws ClassNotFoundException {
+        String CHECK_SQL = "SELECT * FROM promotion WHERE promoCode = ?";
+
+        Promotion promo = null;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+            PreparedStatement getPromoStatement = conn.prepareStatement(CHECK_SQL);
+            getPromoStatement.setString(1, promoCode);
+            ResultSet rs = getPromoStatement.executeQuery();
+            if(rs.next()) {
+                return rs.getDouble("percentage");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException in isValidPromotion");
+            e.printStackTrace();
+        }
+        return 1;
+    }
 }
