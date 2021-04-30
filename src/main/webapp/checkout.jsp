@@ -125,7 +125,7 @@
             <p class="money">Shipping: <%=shippingPrice%></p>
             <% tax = Math.floor(100 * (shippingPrice + totalPrice) * 0.07) / 100;%>
             <p class="money">Tax: <%=tax%></p>
-            <p class="money">Total: <%=totalPrice + shippingPrice + tax%></p>
+            <p class="money">Total: <%=Math.floor(100 *(totalPrice + shippingPrice + tax)) / 100%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>
