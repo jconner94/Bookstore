@@ -19,10 +19,6 @@ public class HistoryServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    public CartServlet() {
-        super();
-    }
-
     private BookDao bookDao = new BookDao();
     private CartDao cartDao = new CartDao();
 
@@ -36,7 +32,6 @@ public class HistoryServlet extends HttpServlet {
             for(int i = 0; i < cart.length; i++) {
                 System.out.println(cart[i].getTitle());
             }
-            request.getSession().setAttribute("History", history);
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
