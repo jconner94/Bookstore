@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.project.Bookstore.User" %>
+<%@ page import="com.project.Bookstore.UserDao" %>
 <%@ page import="com.project.Bookstore.BookDao" %>
 <%@ page import="com.project.Bookstore.CartDao" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -26,16 +28,36 @@
         <li><a href="contact.jsp" style="text-decoration: none; color: white">Contact</a></li>
         <li><a href="history.html" style="text-decoration: none; color: white">History</a></li>
     </ul>
+    <ul class="greeting">
+        <% if(session.getAttribute("firstName") == null) { %>
+        <li> Hi Guest!</li>
+        <% } else {%>
+        <li>Hi ${firstName}!</li>
+        <% if((Boolean) session.getAttribute("isAdmin")) { %>
+        <li><a href="AdminMain.jsp" style="text-decoration: none; color: white">Admin Home</a></li>
+        <% } %>
+        <% } %>
+    </ul>
     <ul class="icons">
-        <li><a href="search-servlet"><img src="resources/search-icon.svg" alt="" class="top-icon"></a></li>
-        <li><a href="edit-servlet"><img src="resources/profile-icon.svg" alt="" class="top-icon" id="entry"></a></li>
-        <li><a href="shop.html"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <% if(session.getAttribute("uid") == null) { %>
+        <li><a href="login-servlet"><img src="${pageContext.request.contextPath}/resources/profile-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="register-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <% } else {%>
+        <li><a href="logout-servlet"><img src="${pageContext.request.contextPath}/resources/logout-icon.png" alt="" class="top-icon" id="logoutIcon"/></a></li>
+        <li><a href="edit-servlet"><img src="${pageContext.request.contextPath}/resources/register-icon.webp" class="top-icon" id="entry" alt=""/></a></li>
+        <li><a href="cart-servlet"><img src="resources/cart-icon.svg" alt="" class="top-icon"></a></li>
+        <% } %>
+        <li><a href="search-servlet"><img src="${pageContext.request.contextPath}/resources/search-icon.svg" alt="" class="top-icon"/></a></li>
+        <li><a href="forgot-servlet" style="text-decoration: none; color: white">Forgot Password?</a></li>
     </ul>
 </nav>
 <main>
+    <% User user = new User(); user.setUserID(Integer.parseInt(session.getAttribute("uid").toString()));%>
+    <% try { session.setAttribute("currentUser", new UserDao().fetchUserInfo(user)); }
+    catch(ClassNotFoundException e) { e.printStackTrace(); }%>
     <div style="text-align: center;"><h1>Checkout</h1></div>
     <div class="login">
-        <form action="loggedInIndex.jsp" id="checkout">
+        <form action="${pageContext.request.contextPath}/checkout-servlet" method="post">
             <h1>Address</h1>
             <br>
             <label><b>Street Address:</b></label><br>
@@ -88,7 +110,7 @@
             <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                    autocomplete="CVV" maxlength="3" placeholder="xxx" id="username"/>
             <br><br>
-            <button type="submit" id="checkoutButton" onClick="checkoutMail()" value="Submit">Checkout!</button>
+            <button type="submit" id="checkoutButton" onClick="return checkoutEmail()" value="Submit">Checkout!</button>
             <br><br>
         </form>
     </div>
@@ -141,7 +163,6 @@
     </script>
     <% } %>
 </ul>
-</body>
 <script type="text/javascript">
     function checkoutEmail() {
         var form1 = document.getElementById('checkout');
@@ -157,4 +178,6 @@
         alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
     }
 </script>
+</body>
+
 </html>

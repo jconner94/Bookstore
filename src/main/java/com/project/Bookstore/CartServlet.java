@@ -46,53 +46,58 @@ public class CartServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String cover = request.getParameter("bookCover");
-        String title = request.getParameter("title");
-        boolean remove = false;
-        if(request.getParameter("remove") != null) {
-            remove = true;
-        }
-        if(remove) {
-            removeBook(request, response, title);
-        } else {
-
-            Book book = null;
-
-            try {
-                book = bookDao.getBookByTitle(title);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            Long isbn = new Long(0);
-            isbn = book.getIsbn();
-
-            Integer quantity = new Integer(1);
-            quantity = book.getCurrentStock();
-
-            Double sellPrice = new Double(0);
-            sellPrice = book.getSellPrice();
-
-            Integer userID = new Integer(-1);
-            userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
-
-            Cart cart = new Cart();
-
-            cart.setCoverPic(cover);
-            cart.setTitle(title);
-            cart.setIsbn(isbn);
-            cart.setCurrentStock(quantity);
-            cart.setSellPrice(sellPrice);
-            cart.setUserID(userID);
-
-            try {
-                cartDao.addBookToCart(title, userID);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        if(request.getSession().getAttribute("uid") == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login-servlet");
             dispatcher.forward(request, response);
+        } else {
+            String cover = request.getParameter("bookCover");
+            String title = request.getParameter("title");
+            boolean remove = false;
+            if (request.getParameter("remove") != null) {
+                remove = true;
+            }
+            if (remove) {
+                removeBook(request, response, title);
+            } else {
+
+                Book book = null;
+
+                try {
+                    book = bookDao.getBookByTitle(title);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Long isbn = new Long(0);
+                isbn = book.getIsbn();
+
+                Integer quantity = new Integer(1);
+                quantity = book.getCurrentStock();
+
+                Double sellPrice = new Double(0);
+                sellPrice = book.getSellPrice();
+
+                Integer userID = new Integer(-1);
+                userID = Integer.parseInt(request.getSession().getAttribute("uid").toString());
+
+                Cart cart = new Cart();
+
+                cart.setCoverPic(cover);
+                cart.setTitle(title);
+                cart.setIsbn(isbn);
+                cart.setCurrentStock(quantity);
+                cart.setSellPrice(sellPrice);
+                cart.setUserID(userID);
+
+                try {
+                    cartDao.addBookToCart(title, userID);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+            }
         }
     }
 
