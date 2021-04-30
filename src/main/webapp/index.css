@@ -224,5 +224,16 @@ footer {
     width: 50%;
     border: 3px solid #080808;
     padding: 50px;
+    border-collapse: collapse;
 }
+
+.checkoutColumn td, .checkoutColumn th {
+    border: 1px solid #9d9c9c;
+    padding: 5px;
+}
+
+.checkoutColumn tr:nth-child(even){
+    background-color: #9d9c9c;
+}
+
 
