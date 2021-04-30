@@ -91,43 +91,14 @@
                     <td>$${book.buyPrice}</td>
                     <td>$${book.sellPrice}</td>
                     <td>${book.isbn}</td>
-                    <td><button type="submit" formaction="${pageContext.request.contextPath}/edit-book-servlet?title=${book.title}">Edit</button></td>
-                    <td><button type="submit" formaction="${pageContext.request.contextPath}/ConfirmDelete.jsp?title=${book.title}&cover=${book.coverPic}">Delete</button></td>
+                    <td><button type="submit" id="submit2" formaction="${pageContext.request.contextPath}/edit-book-servlet?title=${book.title}">Edit</button></td>
+                    <td><button type="submit" id="submit2" formaction="${pageContext.request.contextPath}/ConfirmDelete.jsp?title=${book.title}&cover=${book.coverPic}">Delete</button></td>
                 </tr>
             </c:forEach>
         </table>
         <button type="submit" id="submit">Return to Admin Page</button>
         <br><br>
     </form>
-
-    <div class="admin-options">
-        <div class="option">
-            <img src="resources/cart-icon.svg" class="images" width="100%" height="100%">
-            <div class="middle">
-                <form method="post" action="addNewBook.jsp">
-                    <button type="submit" class="shopButton" name="shopButton">Add New Book</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="option">
-            <img src="resources/profile-icon.svg" class="images" width="100%" height="100%">
-            <div class="middle">
-                <form method="get" action="edit-book-servlet">
-                    <button type="submit" class="shopButton" name="shopButton">Edit Book Info</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="option">
-            <img src="resources/search-icon.svg" class="images" width="100%" height="100%">
-            <div class="middle">
-                <form method="post" action="index.html"> <!-- Needs changing -->
-                    <button type="submit" class="shopButton" name="shopButton">Delete Book</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
 </main>
 <footer>Copyright &copy; 2021</footer>

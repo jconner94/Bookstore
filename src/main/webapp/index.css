@@ -103,6 +103,12 @@ footer {
     box-sizing: border-box;
 }
 
+#content{
+    width:720px;/*change the value to suite ur need*/
+    margin:0 auto;/*this will center ur content*/
+    word-wrap: break-word;
+}
+
 #editEmail {
     width: 60%;
     padding: 10px 20px;

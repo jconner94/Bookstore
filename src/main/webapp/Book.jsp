@@ -48,10 +48,13 @@
         <img src="${pageContext.request.contextPath}/resources/${Book.coverPic}" height="500" width="300" alt="">
         <h1>${Book.title}</h1>
         <ul class="book-info">
+
             <li>${Book.authorName}</li>
             <li>${Book.category}</li>
             <br><br>
+            <div id="content">
             <li>${Book.description}</li>
+            </div>
             <br><br>
             <li>Published by ${Book.publisher}</li>
             <li>Edition: ${Book.edition}</li>
