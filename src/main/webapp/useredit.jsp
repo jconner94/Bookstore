@@ -189,6 +189,14 @@
         alert("Email sent to given address! Email might take up to 5 minutes to send. If you did not recieve an email, please try again.")
     }
 </script>
-
+<ul class="greeting">
+    <% if(session.getAttribute("firstName") != null) { %>
+    <script type = "text/javascript" >
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <% } %>
+</ul>
 </body>
 </html>
