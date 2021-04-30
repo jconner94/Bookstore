@@ -85,14 +85,16 @@
             <input type="text" name="cvv" inputmode="numeric" pattern="[0-9\s]{3}"
                    autocomplete="CVV" maxlength="3" placeholder="xxx" id="username"/>
             <br><br>
-            <button type="submit" id="checkoutButton" value="Submit"></button>
-                Create Account</button>
+            <button type="submit" id="checkoutButton" value="Submit">Checkout!</button>
             <br><br>
         </form>
     </div>
     <aside class="checkoutColumn">
         <h1>Books in Cart:</h1>
         <% int uid = Integer.parseInt(session.getAttribute("uid").toString()); %>
+        <% double totalPrice = 0;%>
+        <% double shippingPrice = 10.00;
+        double tax; %>
         <% try { session.setAttribute("Books", new CartDao().getCurrentCart(uid)); }
         catch(ClassNotFoundException e) { e.printStackTrace(); }%>
         <table class="table-cart">
@@ -111,15 +113,17 @@
                     <td>${book.isbn}</td>
                     <td>${book.currentStock}</td>
                     <td>$${book.sellPrice}</td>
+
                 </tr>
             </c:forEach>
             </tbody>
         </table>
             <br><br>
-            <p class="money">Sub-total: </p>
-            <p class="money">Tax: </p>
-            <p class="money">Shipping: </p>
-            <p class="money">Total: </p>
+            <p class="money">Sub-total: <%totalPrice%></p>
+            <p class="money">Shipping: <%shippingPrice%></p>
+            <% tax = (shippingPrice + totalPrice) * 0.07%>
+            <p class="money">Tax: <%tax%></p>
+            <p class="money">Total: <%totalPrice + shippingPrice + tax%></p>
     </aside>
 </main>
 <footer>Copyright &copy; 2021</footer>
